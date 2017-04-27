@@ -1,4 +1,4 @@
-# `*args`와 `**kwargs'의 사용
+# Packing Arguments
 
 다른 사람의 코드를 보다보면 종종 보이는 `*args`와 `**kwargs`가 있었다.
 
