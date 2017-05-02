@@ -57,38 +57,38 @@ bind-key a send-prefix
 ## Session
 
 ```
-:new<CR>		new session
-<prefix> s		list sessions
-<prefix> $		name session
-exit			exit session
+:new<CR>					new session
+<prefix> s					list sessions
+<prefix> $					name session
+exit						exit session
 ```
 
 ## Window
 
 ```
-<prefix> c		new window
-<prefix> n		move to next window
-<prefix> p		move to prev window
-<prefix> 0-9	move to nth window
-<prefix> a		move to last window
-<prefix> w		list windows
-<prefix> ,		name window
-<prefix> &		kill window
+<prefix> c					new window
+<prefix> n					move to next window
+<prefix> p					move to prev window
+<prefix> 0-9				move to nth window
+<prefix> a					move to last window
+<prefix> w					list windows
+<prefix> ,					name window
+<prefix> &					kill window
 ```
 
 ## Pane
 
 ```
-<prefix> %		vertical split
-<prefix> "		horizontal split
+<prefix> %					vertical split
+<prefix> "					horizontal split
 
-<prefix> <spacebar> toggle pane layout (vertical <-> horizontal)
+<prefix> <spacebar>			toggle pane layout (vertical <-> horizontal)
 
-<prefix> q		move to pane by number(displayed screen)
-<prefix> o		move to next pane
-<prefix> <arrow>	move to pane by arrow key
+<prefix> q					move to pane by number(displayed screen)
+<prefix> o					move to next pane
+<prefix> <arrow>			move to pane by arrow key
 
-<prefix> x		kill pane
+<prefix> x					kill pane
 
 # resize pane in 
 <prefix> : resize-pane -D	resizing pane to down
