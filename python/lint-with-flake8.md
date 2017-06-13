@@ -103,7 +103,7 @@ $ flake8 --install-hook git
 
 - strict
 
-기본적으로 `false`인데 이 때는 Lint의 결과에 상관없이 커밋이 진행된다.
+기본적으로 `false`인데 이 때는 Lint의 결과에 상관없이 커밋이 진행된다.(`exit code`가 무조건 0)
 
 ```
 $ git config --bool flake8.strict true
