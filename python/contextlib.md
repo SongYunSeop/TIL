@@ -14,9 +14,12 @@ with open('test.txt', 'r') as txt:
 
 `Python`의 `contextlib`을 사용하면 저것과 비슷한 역할을 하는 함수를 만들 수 있다.
 
+`@contextmanater`라는 데코레이터로 함수를 감싸기만하면 된다.
+
 ```python
 from contextlib import contextmanager
 
+@contextmanager
 def get_database_connection():
     try:
         conn = db_client.connect()
