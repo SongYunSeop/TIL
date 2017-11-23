@@ -1,0 +1,2 @@
+mkdocs==0.17.2
+mkdocs-material==2.1.0
