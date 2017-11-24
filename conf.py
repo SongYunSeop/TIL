@@ -37,7 +37,7 @@ html_theme_options = {
     'display_version': False,
     'navigation_depth': 3,
 }
-html_static_path = ['_static']
+html_static_path = []
 
 html_sidebars = {
     '**': [

@@ -1,18 +1,69 @@
-.. TIL documentation master file, created by
-   sphinx-quickstart on Fri Nov 24 01:46:39 2017.
-   You can adapt this file completely to your liking, but it should at least
-   contain the root `toctree` directive.
-
-Welcome to TIL's documentation!
+Today I Learned
 ===============================
+
+(오늘 새로 배운 것이나 이미 알고있지만) 기록으로 남길만한 것들을 기록합니다.
+
+작성규칙
+-------------------------------
+
+- 언어나 기술명으로 폴더를 만든다. 
+- 파일명은 영어로 한다.
 
 .. include:: README.rst
 
 .. toctree::
-    :caption: Contents:
+    :caption: CLI:
     :glob:
     :titlesonly:
 
-    */*
+    cli/*
+
+.. toctree::
+    :caption: Docker:
+    :glob:
+    :titlesonly:
+
+    docker/*
+
+.. toctree::
+    :caption: Git:
+    :glob:
+    :titlesonly:
+
+    git/*
+
+.. toctree::
+    :caption: Http:
+    :glob:
+    :titlesonly:
+
+    http/*
+
+.. toctree::
+    :caption: MySQL:
+    :glob:
+    :titlesonly:
+
+    mysql/*
+
+.. toctree::
+    :caption: Python:
+    :glob:
+    :titlesonly:
+
+    python/*
 
 
+.. toctree::
+    :caption: Tmux:
+    :glob:
+    :titlesonly:
+
+    tmux/*
+
+.. toctree::
+    :caption: VIM:
+    :glob:
+    :titlesonly:
+
+    vim/*
