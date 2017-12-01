@@ -88,4 +88,4 @@ SELECT c1, c2, c3 FROM t1 WHERE c1 = 'a' GROUP BY c2, c3;
 ```
 
 ## Refer
-- https://dev.mysql.com/doc/refman/5.7/en/group-by-optimization.html
+- [https://dev.mysql.com/doc/refman/5.7/en/group-by-optimization.html](https://dev.mysql.com/doc/refman/5.7/en/group-by-optimization.html)
