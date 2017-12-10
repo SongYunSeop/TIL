@@ -9,8 +9,6 @@ Today I Learned
 - 언어나 기술명으로 폴더를 만든다. 
 - 파일명은 영어로 한다.
 
-.. include:: README.rst
-
 .. toctree::
     :caption: CLI:
     :glob:

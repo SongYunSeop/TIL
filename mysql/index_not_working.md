@@ -43,5 +43,5 @@ SELECT * FROM `table` WHERE `name` like '%yun%';
 ## OR 조건을 사용할 경우
 
 ```sql
-SELECT * FROM `table` WHERE `name` = 'yunseop' 
+SELECT * FROM `table` WHERE `name` = 'yunseop' or `name` = 'song';
 ```
