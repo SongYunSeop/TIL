@@ -7,7 +7,7 @@ nosetest에는 기본적으로 coverage를 측정할 수 있는 기능이 있어
 ```bash
 $ pip install nose
 $ pip install coverage
-$ nosetests --with-coverage --cover-package=app --cover-html --cover-html dir=cover tests/test_coverage.py
+$ nosetests --with-coverage --cover-package=app --cover-html --cover-html-dir=cover tests/test_coverage.py
 ```
 
 옵션에 대한 상세한 내용은 [공식문서](http://nose.readthedocs.io/en/latest/plugins/cover.html)에서 확인할 수 있다.

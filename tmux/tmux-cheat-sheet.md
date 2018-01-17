@@ -1,4 +1,4 @@
-# tmux
+# Tmux Cheat Sheet
 
 ## Common Command
 
