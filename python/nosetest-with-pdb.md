@@ -1,4 +1,4 @@
-# nose with pdb
+# nosetest와 pdb
 
 nose는 python testing libary이다.
 
