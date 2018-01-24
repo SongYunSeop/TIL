@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 from recommonmark.parser import CommonMarkParser
 
-extensions = ['sphinxcontrib.googleanalytics']
+extensions = []
 
 templates_path = ['_templates']
 
@@ -62,5 +62,3 @@ texinfo_documents = [
      author, 'TIL', 'One line description of project.',
      'Miscellaneous'),
 ]
-
-googleanalytics_id = 'UA-82138310-1'
