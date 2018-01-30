@@ -46,4 +46,6 @@ git fetch -u <remote>
 
 git clone <remote_repo_url>
  
+git branch | grep 'hotfix' | xargs git branch -D
+hotfix가 들어간 branch 모두 삭제하기
 ```
