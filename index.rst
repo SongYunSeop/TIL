@@ -51,6 +51,12 @@ Today I Learned
 
     python/*
 
+.. toctree::
+    :caption: React:
+    :glob:
+    :titlesonly:
+
+    react/*
 
 .. toctree::
     :caption: Tmux:
