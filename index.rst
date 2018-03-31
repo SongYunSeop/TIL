@@ -6,7 +6,7 @@ Today I Learned
 작성규칙
 -------------------------------
 
-- 언어나 기술명으로 폴더를 만든다. 
+- 언어나 기술명으로 폴더를 만든다.
 - 파일명은 영어로 한다.
 
 .. toctree::
@@ -22,6 +22,13 @@ Today I Learned
     :titlesonly:
 
     docker/*
+
+.. toctree::
+    :caption: Druid:
+    :glob:
+    :titlesonly:
+
+    druid/*
 
 .. toctree::
     :caption: Git:
