@@ -18,9 +18,7 @@
 
 - 집계 결과를 위한 컬럼, 보통 숫자형의 데이터 컬럼이 됨. count, sum, mean 등 연산이 가능함
 
-
-
-##Sharding the Data
+## Sharding the Data
 
 드루이드는 항상 먼저 시간에 대해서 데이터를 샤딩한다.
 
@@ -28,7 +26,7 @@
 
 세그먼트 이름은 `dataSource_interval_version_partitionNumber` 이런식으로 결정 된다.
 
-##Roll-up
+## Roll-up
 
 원시 데이터를 줄이기 위해 수집될 때 롤업을 함
 
@@ -39,10 +37,10 @@
    이 모드에서는 실제초 집계를 하기 전에 전처리 과정이 필요함(intervals and shardSpecs 이런것들을 결정하기 위해)
 2. best-effort roll-up
     Meanwhile, in the best-effort roll-up, input data might not be perfectly aggregated and thus there can be multiple segments holding the rows which should belong to the same segment with the perfect roll-up since they have the same dimension value and their timestamps fall into the same interval.
-   전처리 과정이 필요하지는 않지만 데이터가 perfect roll-up mode 보다 크게 나올 수 있음
-   모든 streaming indexing(실시간 인덱스 생성, 카프카 인덱싱 서비스)은 이 모드로 처리됨
+      전처리 과정이 필요하지는 않지만 데이터가 perfect roll-up mode 보다 크게 나올 수 있음
+      모든 streaming indexing(실시간 인덱스 생성, 카프카 인덱싱 서비스)은 이 모드로 처리됨
 
-##Indexing the Data
+## Indexing the Data
 
 데이터의 immutable한 snapshot을 만들어서 쿼리에 사용한다.
 
@@ -50,14 +48,14 @@
 
 쿼리에 필요한 컬럼을 사용하는데, 드루이드는 이 컬럼을 찾는것을 매우 잘함
 
-##Loading the Data
+## Loading the Data
 
 드루이드의 Igeation은 두가지임
 
 1. Real Time
 2. Batch
 
-##Querying the Data
+## Querying the Data
 
 드루이드의 기본 쿼리 언어는 `HTTP + JSON` 이지만 라이브러리를 사용하면 SQL 등 다양한 언어로 사용할 수 있음
 
@@ -65,7 +63,7 @@
 
 드루이드에 로드하기 전 데이터를 비정규화 해야하므로 ETL에서 조인을 수행해야함
 
-##The Druid Cluster
+## The Druid Cluster
 
 - Historical Nodes
   드루이드 클러스터의 백본 역할
@@ -83,9 +81,10 @@
   Real-time processing(데이터를 ingeation하고 세그먼트를 만듬)
   Hand-off segment(Historical 노드에게 세그먼트 전달)
 
-##External Dependencies
+## External Dependencies
 
 - Zookeeper
+  Service discovery
 - Metadata Storage
   Segment나 설정에 대한 metadata를 저장하는 곳
   Segment를 생성하면 Metadata Storage에 새 항목을 쓰면,
@@ -96,20 +95,13 @@
   Segment의 영구적인 백업 저장소
   Segment를 생성하면 Segment를 Deep Storage에 업로드하고
   Historical Node는 Deep Storage에서 Segment를 다운로드함
-
-​    
-
-##High Availability 
+  
+## High Availability 
 
 기본적으로 HA를 보장하게 설계되었다함.
 
 걱정없이 쓰고싶다면 각 노드 타입당 최소 2개이상으로
 
-
-
 ## refer
 
 -[http://druid.io/docs/latest/design/](http://druid.io/docs/latest/design/)
-
-
-
