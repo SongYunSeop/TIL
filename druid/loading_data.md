@@ -1,5 +1,3 @@
-
-
 # Loading Data
 
 ## Ingestion Method
