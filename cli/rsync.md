@@ -8,7 +8,7 @@ Rsync(Remote Synchronization)
 ```sh
 rsync [OPTION]... SRC [SRC]... DEST
 rsync [OPTION]... SRC [SRC]... [USER@]HOST:DEST
-rsync [OPTION]... SRC [SRC]... [USER@]HOST::DEST
+rsync [OPTION]... SRC [SRC]... [USER@]HOST:DEST
 rsync [OPTION]... SRC [SRC]... rsync://[USER@]HOST[:PORT]/DEST
 rsync [OPTION]... [USER@]HOST:SRC [DEST]
 rsync [OPTION]... [USER@]HOST::SRC [DEST]
