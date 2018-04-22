@@ -1,0 +1,30 @@
+# Data Format
+
+드루이드는 JSON, CSV, TSV 혹은 Custom format으로 데이터를 가져갈 수 있음
+
+## Custom Formats
+
+커스텀 포멧에 Regex parser나 Javascript parser를 사용할 수 있음
+
+## Contiguration
+
+`dataScheme`안에 있는 `parseSpec`으로 데이터를 가져올 수 있음
+
+#### JSON
+
+```json
+"parseSpec":{
+    "format" : "json",
+    "timestampSpec" : {
+      "column" : "timestamp"
+    },
+    "dimensionSpec" : {
+      "dimensions" : ["page","language","user","unpatrolled","newPage","robot","anonymous","namespace","continent","country","region","city"]
+    }
+}
+```
+
+드루이드에서 [Flatten JSON](http://druid.io/docs/0.12.0/ingestion/flatten-json.html)을 사용할 수 있음
+
+더 많은 정보는 [Data Formats for Ingestion](http://druid.io/docs/0.12.0/ingestion/data-formats.html)에서
+

@@ -1,0 +1,429 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Druid &mdash; TIL 1.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="TIL 1.0 documentation" href="../index.html"/>
+        <link rel="next" title="Loading Data" href="01.loading_data.html"/>
+        <link rel="prev" title="docker-compose depends on" href="../docker/docker-compose.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> TIL
+          
+
+          
+          </a>
+
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">CLI:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../cli/find-process-using-x-port.html">특정 포트를 사용하고 있는 프로세스 확인하기</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cli/kill_process.html">프로세스 죽이기</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cli/move_start_or_end_of_line.html">터미널에서 처음이나 끝으로 이동하는 방법</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cli/rsync.html">rsync</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cli/ssh_for_public_key.html">Public key로 SSH 접속하기</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Docker:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../docker/docker-compose.html">docker-compose depends on</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Druid:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Druid</a></li>
+<li class="toctree-l1"><a class="reference internal" href="01.loading_data.html">Loading Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="02.data_format.html">Data Format</a></li>
+<li class="toctree-l1"><a class="reference internal" href="03.data_scheme.html">Data Scheme</a></li>
+<li class="toctree-l1"><a class="reference internal" href="04.data_ingestion.html">Data Ingestion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="05.querying.html">Querying</a></li>
+<li class="toctree-l1"><a class="reference internal" href="06.group_by_query.html">GroupBy Query</a></li>
+<li class="toctree-l1"><a class="reference internal" href="07.query_components.html">Query Components</a></li>
+<li class="toctree-l1"><a class="reference internal" href="08.updating_data.html">Updating Existing Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="99.local_environment.html">로컬 개발 환경 구축</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setting_druid_with_emr.html">EMR과 함께 Druid를 셋팅해보자!</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Git:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../git/git-command.html">Git Command</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../git/git-hook.html">Git hook</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../git/git-rm-already-committed-file.html">이미 커밋된 파일 삭제하고 싶을 때!</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../git/setting-remote-branch.html">브랜치의 Remote Branch 설정하기</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Http:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../http/OPTIONS_Method.html">OPTIONS Method</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../http/PATCH_Method.html">PATCH Method</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../http/URL_URN_URI.html">URL &amp; URN &amp; URI</a></li>
+</ul>
+<p class="caption"><span class="caption-text">MySQL:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../mysql/add_fk_with_online_ddl.html">fk를 추가할 떄 ALGORITHM=INPLACE가 안된다면!</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mysql/error-code-1055.html">Error Code: 1055</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mysql/full-outer-join.html">MySQL에서 FULL OUTER JOIN 하는 방법</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mysql/group-by-optimization.html">GROUP BY 최적화</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mysql/index_not_working.html">Index를 타지 않는 쿼리</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mysql/localhost-vs-127.0.0.1.html">MySQL에서 localhost != 127.0.0.1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mysql/rewriting-subqueries-as-join.html">Subquery는 Join으로 바꿉시다!</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mysql/show_processlist.html">실행 중인 쿼리 보기</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mysql/show_select_result_vertically.html">SELECT 결과를 버티컬하게 보기</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mysql/some_case_insert_with_duplicated_key.html">INSERT 시에 중복(Duplicate) 키 에러가 난다면...</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mysql/update_at_safe_mode.html">UPDATE 시에 SAFE MODE 라며 안될 때</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Python:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../python/arrow_key_is_not_working.html">화살표 키가 안먹을 때</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python/bitwise-operators.html">비트 연산자</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python/contextlib.html">contextlib</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python/datetime-and-timestamp.html">Datetime과 Timestamp</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python/lint-with-flake8.html">Lint with Flake8</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python/mocking-protected-method.html">Protected/Private method를 Mocking 하고 싶다면?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python/nosetest-with-coverage.html">nosetest와 coverage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python/nosetest-with-pdb.html">nosetest와 pdb</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python/packing_arguments.html">Packing Arguments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python/python-comparing.html"><code class="docutils literal"><span class="pre">is</span></code>와 <code class="docutils literal"><span class="pre">==</span></code>의 차이</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python/python-debugger.html">Python Debugger</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python/setting_for_virtualenv.html">Virtualenv Setting</a></li>
+</ul>
+<p class="caption"><span class="caption-text">React:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../react/00.what-is-react.html">React 란?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../react/01.introducing-jsx.html">Introducing JSX</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Tmux:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../tmux/settings-for-vim-color-scheme.html">Tmux에서 Vim Color Scheme가 안될때</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tmux/tmux-cheat-sheet.html">Tmux Cheat Sheet</a></li>
+</ul>
+<p class="caption"><span class="caption-text">VIM:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../vim/E518-unknown-option.html">E518: Unknown option 에러가 날때</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../vim/backspace-not-working.html">Backspace, DEL key가 작동안할 때</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../vim/json-beautify.html">JSON Beautify</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../vim/recording.html">Recording</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../vim/replace.html">Replace</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../vim/undo-redo.html">UNDO REDO</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../vim/vim-movement.html">Vim에서 이동하는 방법</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">TIL</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+      <li>Druid</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/druid/00.overview.md.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="druid">
+<span id="druid"></span><h1>Druid<a class="headerlink" href="#druid" title="Permalink to this headline">¶</a></h1>
+<p>드루이드는 이벤트 데이터에 대한 <strong>OLAP</strong> 쿼리를 위해 설계된 오픈 소스 데이터 저장소이다.</p>
+<div class="section" id="data">
+<span id="data"></span><h2>Data<a class="headerlink" href="#data" title="Permalink to this headline">¶</a></h2>
+<p>드루이드에서 데이터는 3가지 개념으로 나눈다.</p>
+<ul>
+<li><p class="first">Timestamp column</p>
+<p>드루이드에서 모든 질의는 timestamp기반으로 처리한다.</p>
+</li>
+<li><p class="first">Dimension column</p>
+</li>
+<li><p class="first">필터링하거나 그룹바이할 떄 쓰이는 문자열 컬럼</p>
+</li>
+<li><p class="first">Metric column</p>
+</li>
+<li><p class="first">집계 결과를 위한 컬럼, 보통 숫자형의 데이터 컬럼이 됨. count, sum, mean 등 연산이 가능함</p>
+</li>
+</ul>
+</div>
+<div class="section" id="sharding-the-data">
+<span id="sharding-the-data"></span><h2>Sharding the Data<a class="headerlink" href="#sharding-the-data" title="Permalink to this headline">¶</a></h2>
+<p>드루이드는 항상 먼저 시간에 대해서 데이터를 샤딩한다.</p>
+<p>예를 들면 다음과 같이 시간에 대해서 데이터가 각 세그먼트로 분리된다.</p>
+<p>세그먼트 이름은 <code class="docutils literal"><span class="pre">dataSource_interval_version_partitionNumber</span></code> 이런식으로 결정 된다.</p>
+</div>
+<div class="section" id="roll-up">
+<span id="roll-up"></span><h2>Roll-up<a class="headerlink" href="#roll-up" title="Permalink to this headline">¶</a></h2>
+<p>원시 데이터를 줄이기 위해 수집될 때 롤업을 함</p>
+<p>드루이드는 2가지 롤업 모드를 제공한다.</p>
+<ol class="simple">
+<li>perfect roll-up
+처리 시간에 완벽하게(모든 데이터를) 집게됨
+이 모드에서는 실제초 집계를 하기 전에 전처리 과정이 필요함(intervals and shardSpecs 이런것들을 결정하기 위해)</li>
+<li>best-effort roll-up
+Meanwhile, in the best-effort roll-up, input data might not be perfectly aggregated and thus there can be multiple segments holding the rows which should belong to the same segment with the perfect roll-up since they have the same dimension value and their timestamps fall into the same interval.
+전처리 과정이 필요하지는 않지만 데이터가 perfect roll-up mode 보다 크게 나올 수 있음
+모든 streaming indexing(실시간 인덱스 생성, 카프카 인덱싱 서비스)은 이 모드로 처리됨</li>
+</ol>
+</div>
+<div class="section" id="indexing-the-data">
+<span id="indexing-the-data"></span><h2>Indexing the Data<a class="headerlink" href="#indexing-the-data" title="Permalink to this headline">¶</a></h2>
+<p>데이터의 immutable한 snapshot을 만들어서 쿼리에 사용한다.</p>
+<p>드루이드는 컬럼을 저장하는데 이것은 컬럼이 각각 따로 저장될 수 있다는것을 의미함</p>
+<p>쿼리에 필요한 컬럼을 사용하는데, 드루이드는 이 컬럼을 찾는것을 매우 잘함</p>
+</div>
+<div class="section" id="loading-the-data">
+<span id="loading-the-data"></span><h2>Loading the Data<a class="headerlink" href="#loading-the-data" title="Permalink to this headline">¶</a></h2>
+<p>드루이드의 Igeation은 두가지임</p>
+<ol class="simple">
+<li>Real Time</li>
+<li>Batch</li>
+</ol>
+</div>
+<div class="section" id="querying-the-data">
+<span id="querying-the-data"></span><h2>Querying the Data<a class="headerlink" href="#querying-the-data" title="Permalink to this headline">¶</a></h2>
+<p>드루이드의 기본 쿼리 언어는 <code class="docutils literal"><span class="pre">HTTP</span> <span class="pre">+</span> <span class="pre">JSON</span></code> 이지만 라이브러리를 사용하면 SQL 등 다양한 언어로 사용할 수 있음</p>
+<p>드루이드는 조인이 없다. (하지만 듣기로 join이 가능하게 extension을 <strong>만들어서</strong> 쓰면 된다고 함.)</p>
+<p>드루이드에 로드하기 전 데이터를 비정규화 해야하므로 ETL에서 조인을 수행해야함</p>
+</div>
+<div class="section" id="the-druid-cluster">
+<span id="the-druid-cluster"></span><h2>The Druid Cluster<a class="headerlink" href="#the-druid-cluster" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Historical Nodes
+드루이드 클러스터의 백본 역할
+Immutable Segment를 로컬에서 다운로드하고 그 세그먼트에 대한 쿼리를 제공함
+load segment, drop segment, serve query on segment</li>
+<li>Broker Nodes
+클라이언트와 응용 프로그램이 드루이드에서 데이터를 얻기위해 질의하는
+<strong>쿼리 분산 및 결과 수집 및 병합</strong>을 담당함
+세그먼트가 어디에 있는지 알 수 있음</li>
+<li>Coordinator Nodes
+클러스터의 Historical Nodes에 있는 <strong>세그먼트를 관리함</strong>
+Historical Nodes에 새로운 세그먼트를 로드하고, 옛날 세그먼트를 삭제하고, 세그먼트들을 이동시킴(load balance)</li>
+<li>Real-time Processing
+Standalone Real-time node나 Indexing Service를 사용해서 실시간 처리를 할 수 있음
+Real-time processing(데이터를 ingeation하고 세그먼트를 만듬)
+Hand-off segment(Historical 노드에게 세그먼트 전달)</li>
+</ul>
+</div>
+<div class="section" id="external-dependencies">
+<span id="external-dependencies"></span><h2>External Dependencies<a class="headerlink" href="#external-dependencies" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Zookeeper
+Service discovery</li>
+<li>Metadata Storage
+Segment나 설정에 대한 metadata를 저장하는 곳
+Segment를 생성하면 Metadata Storage에 새 항목을 쓰면,
+Coordinator Node에서 그것을 보고 새로운 데이터가 저장되는지 옛날 데이터가 삭제되는지 알 수 있다.
+Production으로는 MySQL, PostgreSQL
+테스트용 단일 머신에서 Derby도 괜찮음</li>
+<li>Deep Storage
+Segment의 영구적인 백업 저장소
+Segment를 생성하면 Segment를 Deep Storage에 업로드하고
+Historical Node는 Deep Storage에서 Segment를 다운로드함</li>
+</ul>
+</div>
+<div class="section" id="high-availability">
+<span id="high-availability"></span><h2>High Availability<a class="headerlink" href="#high-availability" title="Permalink to this headline">¶</a></h2>
+<p>기본적으로 HA를 보장하게 설계되었다함.</p>
+<p>걱정없이 쓰고싶다면 각 노드 타입당 최소 2개이상으로</p>
+</div>
+<div class="section" id="refer">
+<span id="refer"></span><h2>refer<a class="headerlink" href="#refer" title="Permalink to this headline">¶</a></h2>
+<p>-<a class="reference external" href="http://druid.io/docs/latest/design/">http://druid.io/docs/latest/design/</a></p>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="01.loading_data.html" class="btn btn-neutral float-right" title="Loading Data" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../docker/docker-compose.html" class="btn btn-neutral" title="docker-compose depends on" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, Yunseop Song.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'1.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+  
+ 
+<!-- Google Analytics -->
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-82138310-1', 'auto');
+ga('send', 'pageview');
+</script>
+<!-- End Google Analytics -->
+
+
+</body>
+</html>

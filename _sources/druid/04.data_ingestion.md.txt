@@ -1,0 +1,58 @@
+# Data Ingestion
+
+## Ingestion 방법
+
+1. Batch Ingestion
+2. Stream Ingestion
+   - Stream Push
+   - Stream Pull
+
+## Batch Ingestion
+
+<http://druid.io/docs/latest/ingestion/batch-ingestion.html>
+
+## Stream Ingestion
+
+1. Tranquility + Indexing Service
+   설정은 복잡해도, 확장성과 고가용성에 특화됨
+2. standalone Realtime node
+   몇가지 제한사항이 있음(<http://druid.io/docs/latest/ingestion/stream-pull.html#limitations>)
+
+### Stream Push
+
+[Tranquility](https://github.com/druid-io/tranquility/blob/master/docs/overview.md)를 사용해서 할 수 있음(data producer로 사용)
+Tranquility partitioning, replication, service discovery, scheme rollover without downtime
+Server, Kafka, JVM app and stream processor에서 Tranquility를 사용하면 바로 사용할 수 있다함
+
+#### Task creation
+
+Tranquility는 Druid의 realtime indexing task를 생성하고, 파티셔닝, 레플리케이션 등 일들을 해줌
+Tranquility는 Zookeeper를 통해 Task 관리를 함
+
+#### segmentGranularity and windowPeriod
+
+segmentGranularity는 각 작업에 의해 생성된 세그먼트가 포함하는 기간??
+windowPeriod는 이벤트에 허용된 여유 시간
+예를 들어 10분이면, 이벤트의 타임스탬프가 과거 10분 보다 오래되고 미래 10분 보다 앞서있으면 해당 이벤트는 Drop
+
+#### Append only
+
+추가만 가능
+업데이트 삭제 불가능
+시간범위를 삭제할 수는 있다함
+
+#### Guarantees
+
+- `windowPeriod` 밖의 timestamp를 갖는 이벤트는 Drop
+- replica count보다 Middle Manager의 fail수가 많다면 손실은 없을 것임
+- If there is a persistent issue that prevents communication with the Druid indexing service, and retry policies are exhausted during that period, or the period lasts longer than your windowPeriod, some events will be dropped.
+- If there is an issue that prevents Tranquility from receiving an acknowledgement from the indexing service, it will retry the batch, which can lead to duplicated events.
+- If you are using Tranquility inside Storm or Samza, various parts of both architectures have an at-least-once design and can lead to duplicated events.
+
+### Stream Pull
+
+[http://druid.io/docs/0.12.0/ingestion/stream-pull.html](http://druid.io/docs/0.12.0/ingestion/stream-pull.html)
+
+## Hybrid Ingestion
+
+[Hybrid batch/streaming Ingestion](http://druid.io/docs/0.12.0/tutorials/ingestion.html#hybrid-batch-streaming) 을 추천함

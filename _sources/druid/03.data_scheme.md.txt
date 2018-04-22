@@ -1,0 +1,71 @@
+# Data Scheme
+
+## Ingestion Spec
+
+```json
+{
+    "dataScheme" : {...},
+    "ioConfig": {...},
+    "tuningConfig": {...},
+}
+```
+
+| Field        | Description                                                  | Required |
+| ------------ | ------------------------------------------------------------ | -------- |
+| dataScheme   | 들어오는 데이터 스키마, 모든 ingestion은 dataScheme을 공유할 수 있음 | O        |
+| ioConfig     | 데이터가 어디로부터 오는지, 어디에 저장되는지, ingestion마다 다름 | O        |
+| tuningConfig | 파라미터 설정, ingestion마다 다름                            | X        |
+
+## DataScheme
+
+```json
+{
+    "dataSource": "...",
+    "parser": {...},
+    "metricSpec": [{...}, ...],
+    "granularitySpec": {...}
+}
+```
+
+| Field           | Description                             | Required |
+| --------------- | --------------------------------------- | -------- |
+| dataSource      | 데이터 소스의 이름                      | O        |
+| parser          | ingention할 데이터를 어떻게 파싱할지    | O        |
+| metricSpec      | aggregator의 리스트                     | O        |
+| granularitySpec | segment를 만들고 데이터를 롤업하는 방법 | O        |
+
+## Parser
+
+`type`이 없으면 기본적으로 `string`으로 가져감
+
+```json
+{
+    "type": "",
+    "parseSpec": {...}
+}
+```
+
+| Field     | Description                          | Required |
+| --------- | ------------------------------------ | -------- |
+| type      | string hadoopyString                 | X        |
+| parseSpec | ingention할 데이터를 어떻게 파싱할지 | O        |
+
+## GranularitySpec
+
+```json
+{
+    "type": "",
+    "segmentGranularity": "",
+    "queryGranularity": "",
+    "rollup": true,
+    "intervals": [""]
+}
+```
+
+| Field              | Description                                                  | Required |
+| ------------------ | ------------------------------------------------------------ | -------- |
+| type               | `uniform`, `arbitary` 둘 중 하나                             | O        |
+| segmentGranularity | The granularity to create segments at                        | X        |
+| queryGranularity   | The minimum granularity to be able to query results at and the granularity of the data inside the segment. | X        |
+| rollup             | roll up 할지 말지                                            | X        |
+| intervals          | ingeation 되는 데이터의 간격<br />real-time ingestion에서는 생략 | O        |

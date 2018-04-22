@@ -1,0 +1,78 @@
+# Querying
+
+드루이드에서 쿼리는 Queryable Nodes에 HTTP 요청으로 이루어짐
+
+**Queryable Nodes**
+
+- Broker
+- Historical
+- Realtime
+
+```sh
+ curl -X POST '<queryable_host>:<port>/druid/v2/?pretty' -H 'Content-Type:application/json' -d @<query_json_file>
+```
+
+## Availabel Queries
+
+#### Aggregation Queries
+
+- Timeserise
+- TopN
+- GroupBy
+
+#### Metadata Queries
+
+- Time Boundary
+- Segment Metadata
+- Datasource Metadata
+
+#### Search Queries
+
+- Search
+
+## Query Cancellation
+
+```sh
+curl -X DELETE "http://host:port/druid/v2/{queryId}"
+```
+
+## Query Errors
+
+쿼리가 실패하면 status code가 500 으로 떨어짐
+
+```json
+{
+  "error" : "Query timeout",
+  "errorMessage" : "Timeout waiting for task.",
+  "errorClass" : "java.util.concurrent.TimeoutException",
+  "host" : "druid1.example.com:8083"
+}
+```
+
+## Query JSON Format(common)
+
+```json
+{
+  "queryType": "",
+  "dataSource": "",
+  "granularity": "",
+  "filter": { ... },
+  "aggregations": [ { ... } ],
+  "postAggregations": [ { ... } ],
+  "intervals": [ "2012-01-01T00:00:00.000/2012-01-03T00:00:00.000" ],
+  "context": ""
+}
+```
+
+#### property
+
+| property         | description                                                  | required? |
+| ---------------- | ------------------------------------------------------------ | --------- |
+| queryType        | Query 종류(`timeserise`, `topN`, `groupBy`)                  | O         |
+| dataSource       | DataSource 이름.                                             | O         |
+| granularity      | Query의 granularity                                          | X         |
+| filter           | See [Filters](http://druid.io/docs/0.12.0/querying/filters.html) | X         |
+| aggregations     | See [Aggregations](http://druid.io/docs/0.12.0/querying/aggregations.html) | X         |
+| postAggregations | See [Post Aggregations](http://druid.io/docs/0.12.0/querying/post-aggregations.html) | X         |
+| intervals        | Query의 Time Range. ISO-8601 Intervals.                      | O         |
+| context          | An additional JSON Object which can be used to specify certain flags. | X         |

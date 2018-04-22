@@ -1,0 +1,142 @@
+# Introducing JSX
+
+```js
+const element = <h1>Hello, World!</h1>
+```
+
+이것은 `Javascript`인가 `HTML`인가...  
+둘다 아니고 `JSX`라는 것이다.
+
+약간 확장된 Javascript라고 이해하면 된다.
+
+## Why JSX?
+
+React는 렌더링 로직이 다른 UI 로직과의 연결을 고민했다.
+
+이를 위해 별도의 파일에 마크업이나 로직을 넣어서 기능을 분리하는 대신 느슨한 결합으로 문제를 해결하려고 JSX를 사용한 `Component` 개념을 만들었다.
+
+## Embedding Expressions in JSX
+
+중괄호(`{ }`)를 사용해 JSX에서 Javascript 구문을 사용할 수 있다.
+
+```js
+function formatName(user) {
+  return user.firstName + ' ' + user.lastName;
+}
+
+const user = {
+  firstName: 'Harper',
+  lastName: 'Perez'
+};
+
+const element = (
+  <h1>
+    Hello, {formatName(user)}!
+  </h1>
+);
+
+ReactDOM.render(
+  element,
+  document.getElementById('root')
+);
+```
+
+## JSX is an Expression Too
+
+컴파일 후에 JSX는 Javascript 함수 호출이나 객체로 된다.
+
+이건 JSX를 `for` 문이나 `if` 문 안에서 사용할 수 있다는 것을 의미한다.
+
+```js
+function getGreeting(user) {
+  if (user) {
+    return <h1>Hello, {formatName(user)}!</h1>;
+  }
+  return <h1>Hello, Stranger.</h1>;
+}
+```
+
+## Specifying Attributes with JSX
+
+문자열은 `"`를 사용해 값을 넣을 수 있다.
+
+```js
+const element = <div tabIndex="0"></div>;
+```
+
+중괄호(`{ }`)를 사용해 Javascript 구문을 넣을 수 있다.
+
+```js
+const element = <img src={user.avatarUrl}></img>;
+```
+
+> JSX는 HTML이 아니라 Javascript에 가까운 것이기 때문에 HTML에서 사용하는 속성 이름을 그대로 사용하면 안되는 경우도 있다.
+> 예를 들어 `class`는 `className`이라고 사용해야 한다.
+
+## Specifying Children with JSX
+
+비어있는 태그라면 마지막을 `/>`로 끝내면 된다.
+
+```js
+const element = <img src={user.avatarUrl} />;
+```
+
+하지만 자식 태그가 있다면 다음과 같이 넣으면 된다.
+
+```js
+const element = (
+  <div>
+    <h1>Hello!</h1>
+    <h2>Good to see you here.</h2>
+  </div>
+);
+```
+
+## JSX Prevents Injection Attacks
+
+```js
+const title = response.potentiallyMaliciousInput;
+// This is safe:
+const element = <h1>{title}</h1>;
+```
+
+React는 렌더링 전에 내장된 모든 값들을 이스케이프 처리한다.
+그래서 애플리케이션에 작성되지 않은 내용은 들어갈 수 없다.
+모든 것은 렌더링 전에 문자열로 변환되므로 XSS(cross-site scripting) 공격을 방지할 수 있다.
+
+## JSX Represents Objects
+
+Babel은 JSX를 `React.createElement()` 호출로 변경한다.
+
+```js
+const element = (
+  <h1 className="greeting">
+    Hello, world!
+  </h1>
+);
+```
+
+이건 다음처럼 바뀐다.
+
+```js
+const element = React.createElement(
+  'h1',
+  {className: 'greeting'},
+  'Hello, world!'
+);
+```
+
+그리고 `React.createElement()`는 다음과 같은 객체를 반환한다.
+
+```js
+// Note: this structure is simplified
+const element = {
+  type: 'h1',
+  props: {
+    className: 'greeting',
+    children: 'Hello, world'
+  }
+};
+```
+
+이 객체를 `React Element`라고 한다.

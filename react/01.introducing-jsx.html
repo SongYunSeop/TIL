@@ -1,0 +1,445 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Introducing JSX &mdash; TIL 1.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="TIL 1.0 documentation" href="../index.html"/>
+        <link rel="next" title="Tmux에서 Vim Color Scheme가 안될때" href="../tmux/settings-for-vim-color-scheme.html"/>
+        <link rel="prev" title="React 란?" href="00.what-is-react.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> TIL
+          
+
+          
+          </a>
+
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">CLI:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../cli/find-process-using-x-port.html">특정 포트를 사용하고 있는 프로세스 확인하기</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cli/kill_process.html">프로세스 죽이기</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cli/move_start_or_end_of_line.html">터미널에서 처음이나 끝으로 이동하는 방법</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cli/rsync.html">rsync</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cli/ssh_for_public_key.html">Public key로 SSH 접속하기</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Docker:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../docker/docker-compose.html">docker-compose depends on</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Druid:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../druid/00.overview.html">Druid</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../druid/01.loading_data.html">Loading Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../druid/02.data_format.html">Data Format</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../druid/03.data_scheme.html">Data Scheme</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../druid/04.data_ingestion.html">Data Ingestion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../druid/05.querying.html">Querying</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../druid/06.group_by_query.html">GroupBy Query</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../druid/07.query_components.html">Query Components</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../druid/08.updating_data.html">Updating Existing Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../druid/99.local_environment.html">로컬 개발 환경 구축</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../druid/setting_druid_with_emr.html">EMR과 함께 Druid를 셋팅해보자!</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Git:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../git/git-command.html">Git Command</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../git/git-hook.html">Git hook</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../git/git-rm-already-committed-file.html">이미 커밋된 파일 삭제하고 싶을 때!</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../git/setting-remote-branch.html">브랜치의 Remote Branch 설정하기</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Http:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../http/OPTIONS_Method.html">OPTIONS Method</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../http/PATCH_Method.html">PATCH Method</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../http/URL_URN_URI.html">URL &amp; URN &amp; URI</a></li>
+</ul>
+<p class="caption"><span class="caption-text">MySQL:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../mysql/add_fk_with_online_ddl.html">fk를 추가할 떄 ALGORITHM=INPLACE가 안된다면!</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mysql/error-code-1055.html">Error Code: 1055</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mysql/full-outer-join.html">MySQL에서 FULL OUTER JOIN 하는 방법</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mysql/group-by-optimization.html">GROUP BY 최적화</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mysql/index_not_working.html">Index를 타지 않는 쿼리</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mysql/localhost-vs-127.0.0.1.html">MySQL에서 localhost != 127.0.0.1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mysql/rewriting-subqueries-as-join.html">Subquery는 Join으로 바꿉시다!</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mysql/show_processlist.html">실행 중인 쿼리 보기</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mysql/show_select_result_vertically.html">SELECT 결과를 버티컬하게 보기</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mysql/some_case_insert_with_duplicated_key.html">INSERT 시에 중복(Duplicate) 키 에러가 난다면...</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mysql/update_at_safe_mode.html">UPDATE 시에 SAFE MODE 라며 안될 때</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Python:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../python/arrow_key_is_not_working.html">화살표 키가 안먹을 때</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python/bitwise-operators.html">비트 연산자</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python/contextlib.html">contextlib</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python/datetime-and-timestamp.html">Datetime과 Timestamp</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python/lint-with-flake8.html">Lint with Flake8</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python/mocking-protected-method.html">Protected/Private method를 Mocking 하고 싶다면?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python/nosetest-with-coverage.html">nosetest와 coverage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python/nosetest-with-pdb.html">nosetest와 pdb</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python/packing_arguments.html">Packing Arguments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python/python-comparing.html"><code class="docutils literal"><span class="pre">is</span></code>와 <code class="docutils literal"><span class="pre">==</span></code>의 차이</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python/python-debugger.html">Python Debugger</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python/setting_for_virtualenv.html">Virtualenv Setting</a></li>
+</ul>
+<p class="caption"><span class="caption-text">React:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="00.what-is-react.html">React 란?</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Introducing JSX</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Tmux:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../tmux/settings-for-vim-color-scheme.html">Tmux에서 Vim Color Scheme가 안될때</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tmux/tmux-cheat-sheet.html">Tmux Cheat Sheet</a></li>
+</ul>
+<p class="caption"><span class="caption-text">VIM:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../vim/E518-unknown-option.html">E518: Unknown option 에러가 날때</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../vim/backspace-not-working.html">Backspace, DEL key가 작동안할 때</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../vim/json-beautify.html">JSON Beautify</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../vim/recording.html">Recording</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../vim/replace.html">Replace</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../vim/undo-redo.html">UNDO REDO</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../vim/vim-movement.html">Vim에서 이동하는 방법</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">TIL</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+      <li>Introducing JSX</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/react/01.introducing-jsx.md.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="introducing-jsx">
+<span id="introducing-jsx"></span><h1>Introducing JSX<a class="headerlink" href="#introducing-jsx" title="Permalink to this headline">¶</a></h1>
+<div class="highlight-js"><div class="highlight"><pre><span></span>const element = &lt;h1&gt;Hello, World!&lt;/h1&gt;
+</pre></div>
+</div>
+<p>이것은 <code class="docutils literal"><span class="pre">Javascript</span></code>인가 <code class="docutils literal"><span class="pre">HTML</span></code>인가...둘다 아니고 <code class="docutils literal"><span class="pre">JSX</span></code>라는 것이다.</p>
+<p>약간 확장된 Javascript라고 이해하면 된다.</p>
+<div class="section" id="why-jsx">
+<span id="why-jsx"></span><h2>Why JSX?<a class="headerlink" href="#why-jsx" title="Permalink to this headline">¶</a></h2>
+<p>React는 렌더링 로직이 다른 UI 로직과의 연결을 고민했다.</p>
+<p>이를 위해 별도의 파일에 마크업이나 로직을 넣어서 기능을 분리하는 대신 느슨한 결합으로 문제를 해결하려고 JSX를 사용한 <code class="docutils literal"><span class="pre">Component</span></code> 개념을 만들었다.</p>
+</div>
+<div class="section" id="embedding-expressions-in-jsx">
+<span id="embedding-expressions-in-jsx"></span><h2>Embedding Expressions in JSX<a class="headerlink" href="#embedding-expressions-in-jsx" title="Permalink to this headline">¶</a></h2>
+<p>중괄호(<code class="docutils literal"><span class="pre">{</span> <span class="pre">}</span></code>)를 사용해 JSX에서 Javascript 구문을 사용할 수 있다.</p>
+<div class="highlight-js"><div class="highlight"><pre><span></span>function formatName(user) {
+  return user.firstName + &#39; &#39; + user.lastName;
+}
+
+const user = {
+  firstName: &#39;Harper&#39;,
+  lastName: &#39;Perez&#39;
+};
+
+const element = (
+  &lt;h1&gt;
+    Hello, {formatName(user)}!
+  &lt;/h1&gt;
+);
+
+ReactDOM.render(
+  element,
+  document.getElementById(&#39;root&#39;)
+);
+</pre></div>
+</div>
+</div>
+<div class="section" id="jsx-is-an-expression-too">
+<span id="jsx-is-an-expression-too"></span><h2>JSX is an Expression Too<a class="headerlink" href="#jsx-is-an-expression-too" title="Permalink to this headline">¶</a></h2>
+<p>컴파일 후에 JSX는 Javascript 함수 호출이나 객체로 된다.</p>
+<p>이건 JSX를 <code class="docutils literal"><span class="pre">for</span></code> 문이나 <code class="docutils literal"><span class="pre">if</span></code> 문 안에서 사용할 수 있다는 것을 의미한다.</p>
+<div class="highlight-js"><div class="highlight"><pre><span></span>function getGreeting(user) {
+  if (user) {
+    return &lt;h1&gt;Hello, {formatName(user)}!&lt;/h1&gt;;
+  }
+  return &lt;h1&gt;Hello, Stranger.&lt;/h1&gt;;
+}
+</pre></div>
+</div>
+</div>
+<div class="section" id="specifying-attributes-with-jsx">
+<span id="specifying-attributes-with-jsx"></span><h2>Specifying Attributes with JSX<a class="headerlink" href="#specifying-attributes-with-jsx" title="Permalink to this headline">¶</a></h2>
+<p>문자열은 <code class="docutils literal"><span class="pre">&quot;</span></code>를 사용해 값을 넣을 수 있다.</p>
+<div class="highlight-js"><div class="highlight"><pre><span></span>const element = &lt;div tabIndex=&quot;0&quot;&gt;&lt;/div&gt;;
+</pre></div>
+</div>
+<p>중괄호(<code class="docutils literal"><span class="pre">{</span> <span class="pre">}</span></code>)를 사용해 Javascript 구문을 넣을 수 있다.</p>
+<div class="highlight-js"><div class="highlight"><pre><span></span>const element = &lt;img src={user.avatarUrl}&gt;&lt;/img&gt;;
+</pre></div>
+</div>
+<blockquote>
+<div>JSX는 HTML이 아니라 Javascript에 가까운 것이기 때문에 HTML에서 사용하는 속성 이름을 그대로 사용하면 안되는 경우도 있다.
+예를 들어 <code class="docutils literal"><span class="pre">class</span></code>는 <code class="docutils literal"><span class="pre">className</span></code>이라고 사용해야 한다.</div></blockquote>
+</div>
+<div class="section" id="specifying-children-with-jsx">
+<span id="specifying-children-with-jsx"></span><h2>Specifying Children with JSX<a class="headerlink" href="#specifying-children-with-jsx" title="Permalink to this headline">¶</a></h2>
+<p>비어있는 태그라면 마지막을 <code class="docutils literal"><span class="pre">/&gt;</span></code>로 끝내면 된다.</p>
+<div class="highlight-js"><div class="highlight"><pre><span></span><span class="kr">const</span> <span class="nx">element</span> <span class="o">=</span> <span class="o">&lt;</span><span class="nx">img</span> <span class="nx">src</span><span class="o">=</span><span class="p">{</span><span class="nx">user</span><span class="p">.</span><span class="nx">avatarUrl</span><span class="p">}</span> <span class="o">/&gt;</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>하지만 자식 태그가 있다면 다음과 같이 넣으면 된다.</p>
+<div class="highlight-js"><div class="highlight"><pre><span></span>const element = (
+  &lt;div&gt;
+    &lt;h1&gt;Hello!&lt;/h1&gt;
+    &lt;h2&gt;Good to see you here.&lt;/h2&gt;
+  &lt;/div&gt;
+);
+</pre></div>
+</div>
+</div>
+<div class="section" id="jsx-prevents-injection-attacks">
+<span id="jsx-prevents-injection-attacks"></span><h2>JSX Prevents Injection Attacks<a class="headerlink" href="#jsx-prevents-injection-attacks" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-js"><div class="highlight"><pre><span></span>const title = response.potentiallyMaliciousInput;
+// This is safe:
+const element = &lt;h1&gt;{title}&lt;/h1&gt;;
+</pre></div>
+</div>
+<p>React는 렌더링 전에 내장된 모든 값들을 이스케이프 처리한다.
+그래서 애플리케이션에 작성되지 않은 내용은 들어갈 수 없다.
+모든 것은 렌더링 전에 문자열로 변환되므로 XSS(cross-site scripting) 공격을 방지할 수 있다.</p>
+</div>
+<div class="section" id="jsx-represents-objects">
+<span id="jsx-represents-objects"></span><h2>JSX Represents Objects<a class="headerlink" href="#jsx-represents-objects" title="Permalink to this headline">¶</a></h2>
+<p>Babel은 JSX를 <code class="docutils literal"><span class="pre">React.createElement()</span></code> 호출로 변경한다.</p>
+<div class="highlight-js"><div class="highlight"><pre><span></span>const element = (
+  &lt;h1 className=&quot;greeting&quot;&gt;
+    Hello, world!
+  &lt;/h1&gt;
+);
+</pre></div>
+</div>
+<p>이건 다음처럼 바뀐다.</p>
+<div class="highlight-js"><div class="highlight"><pre><span></span><span class="kr">const</span> <span class="nx">element</span> <span class="o">=</span> <span class="nx">React</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span>
+  <span class="s1">&#39;h1&#39;</span><span class="p">,</span>
+  <span class="p">{</span><span class="nx">className</span><span class="o">:</span> <span class="s1">&#39;greeting&#39;</span><span class="p">},</span>
+  <span class="s1">&#39;Hello, world!&#39;</span>
+<span class="p">);</span>
+</pre></div>
+</div>
+<p>그리고 <code class="docutils literal"><span class="pre">React.createElement()</span></code>는 다음과 같은 객체를 반환한다.</p>
+<div class="highlight-js"><div class="highlight"><pre><span></span><span class="c1">// Note: this structure is simplified</span>
+<span class="kr">const</span> <span class="nx">element</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="nx">type</span><span class="o">:</span> <span class="s1">&#39;h1&#39;</span><span class="p">,</span>
+  <span class="nx">props</span><span class="o">:</span> <span class="p">{</span>
+    <span class="nx">className</span><span class="o">:</span> <span class="s1">&#39;greeting&#39;</span><span class="p">,</span>
+    <span class="nx">children</span><span class="o">:</span> <span class="s1">&#39;Hello, world&#39;</span>
+  <span class="p">}</span>
+<span class="p">};</span>
+</pre></div>
+</div>
+<p>이 객체를 <code class="docutils literal"><span class="pre">React</span> <span class="pre">Element</span></code>라고 한다.</p>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../tmux/settings-for-vim-color-scheme.html" class="btn btn-neutral float-right" title="Tmux에서 Vim Color Scheme가 안될때" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="00.what-is-react.html" class="btn btn-neutral" title="React 란?" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, Yunseop Song.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'1.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+  
+ 
+<!-- Google Analytics -->
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-82138310-1', 'auto');
+ga('send', 'pageview');
+</script>
+<!-- End Google Analytics -->
+
+
+</body>
+</html>

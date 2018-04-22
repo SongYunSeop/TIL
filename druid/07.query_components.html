@@ -1,0 +1,881 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Query Components &mdash; TIL 1.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="TIL 1.0 documentation" href="../index.html"/>
+        <link rel="next" title="Updating Existing Data" href="08.updating_data.html"/>
+        <link rel="prev" title="GroupBy Query" href="06.group_by_query.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> TIL
+          
+
+          
+          </a>
+
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">CLI:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../cli/find-process-using-x-port.html">특정 포트를 사용하고 있는 프로세스 확인하기</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cli/kill_process.html">프로세스 죽이기</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cli/move_start_or_end_of_line.html">터미널에서 처음이나 끝으로 이동하는 방법</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cli/rsync.html">rsync</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cli/ssh_for_public_key.html">Public key로 SSH 접속하기</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Docker:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../docker/docker-compose.html">docker-compose depends on</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Druid:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="00.overview.html">Druid</a></li>
+<li class="toctree-l1"><a class="reference internal" href="01.loading_data.html">Loading Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="02.data_format.html">Data Format</a></li>
+<li class="toctree-l1"><a class="reference internal" href="03.data_scheme.html">Data Scheme</a></li>
+<li class="toctree-l1"><a class="reference internal" href="04.data_ingestion.html">Data Ingestion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="05.querying.html">Querying</a></li>
+<li class="toctree-l1"><a class="reference internal" href="06.group_by_query.html">GroupBy Query</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Query Components</a></li>
+<li class="toctree-l1"><a class="reference internal" href="08.updating_data.html">Updating Existing Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="99.local_environment.html">로컬 개발 환경 구축</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setting_druid_with_emr.html">EMR과 함께 Druid를 셋팅해보자!</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Git:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../git/git-command.html">Git Command</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../git/git-hook.html">Git hook</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../git/git-rm-already-committed-file.html">이미 커밋된 파일 삭제하고 싶을 때!</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../git/setting-remote-branch.html">브랜치의 Remote Branch 설정하기</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Http:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../http/OPTIONS_Method.html">OPTIONS Method</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../http/PATCH_Method.html">PATCH Method</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../http/URL_URN_URI.html">URL &amp; URN &amp; URI</a></li>
+</ul>
+<p class="caption"><span class="caption-text">MySQL:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../mysql/add_fk_with_online_ddl.html">fk를 추가할 떄 ALGORITHM=INPLACE가 안된다면!</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mysql/error-code-1055.html">Error Code: 1055</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mysql/full-outer-join.html">MySQL에서 FULL OUTER JOIN 하는 방법</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mysql/group-by-optimization.html">GROUP BY 최적화</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mysql/index_not_working.html">Index를 타지 않는 쿼리</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mysql/localhost-vs-127.0.0.1.html">MySQL에서 localhost != 127.0.0.1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mysql/rewriting-subqueries-as-join.html">Subquery는 Join으로 바꿉시다!</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mysql/show_processlist.html">실행 중인 쿼리 보기</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mysql/show_select_result_vertically.html">SELECT 결과를 버티컬하게 보기</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mysql/some_case_insert_with_duplicated_key.html">INSERT 시에 중복(Duplicate) 키 에러가 난다면...</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mysql/update_at_safe_mode.html">UPDATE 시에 SAFE MODE 라며 안될 때</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Python:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../python/arrow_key_is_not_working.html">화살표 키가 안먹을 때</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python/bitwise-operators.html">비트 연산자</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python/contextlib.html">contextlib</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python/datetime-and-timestamp.html">Datetime과 Timestamp</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python/lint-with-flake8.html">Lint with Flake8</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python/mocking-protected-method.html">Protected/Private method를 Mocking 하고 싶다면?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python/nosetest-with-coverage.html">nosetest와 coverage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python/nosetest-with-pdb.html">nosetest와 pdb</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python/packing_arguments.html">Packing Arguments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python/python-comparing.html"><code class="docutils literal"><span class="pre">is</span></code>와 <code class="docutils literal"><span class="pre">==</span></code>의 차이</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python/python-debugger.html">Python Debugger</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python/setting_for_virtualenv.html">Virtualenv Setting</a></li>
+</ul>
+<p class="caption"><span class="caption-text">React:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../react/00.what-is-react.html">React 란?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../react/01.introducing-jsx.html">Introducing JSX</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Tmux:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../tmux/settings-for-vim-color-scheme.html">Tmux에서 Vim Color Scheme가 안될때</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tmux/tmux-cheat-sheet.html">Tmux Cheat Sheet</a></li>
+</ul>
+<p class="caption"><span class="caption-text">VIM:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../vim/E518-unknown-option.html">E518: Unknown option 에러가 날때</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../vim/backspace-not-working.html">Backspace, DEL key가 작동안할 때</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../vim/json-beautify.html">JSON Beautify</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../vim/recording.html">Recording</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../vim/replace.html">Replace</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../vim/undo-redo.html">UNDO REDO</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../vim/vim-movement.html">Vim에서 이동하는 방법</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">TIL</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+      <li>Query Components</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/druid/07.query_components.md.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="query-components">
+<span id="query-components"></span><h1>Query Components<a class="headerlink" href="#query-components" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="datasources">
+<span id="datasources"></span><h2>Datasources<a class="headerlink" href="#datasources" title="Permalink to this headline">¶</a></h2>
+<p>data source는 <code class="docutils literal"><span class="pre">table</span></code>, <code class="docutils literal"><span class="pre">union</span></code>, <code class="docutils literal"><span class="pre">query</span></code> 세종류로 사용할 수 있음</p>
+<div class="section" id="table-data-source">
+<span id="table-data-source"></span><h3>Table Data Source<a class="headerlink" href="#table-data-source" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;table&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;&lt;datasource_name&gt;&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="union-data-source">
+<span id="union-data-source"></span><h3>Union Data Source<a class="headerlink" href="#union-data-source" title="Permalink to this headline">¶</a></h3>
+<p><code class="docutils literal"><span class="pre">Union</span></code>의 같은 경우 사용하려면 <code class="docutils literal"><span class="pre">Broker</span></code> 나 <code class="docutils literal"><span class="pre">Router</span></code>에게 요청해야함</p>
+<p>데이터 소스들은 동일한 스키마를 가져야함</p>
+<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;union&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;dataSources&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;&lt;datasource_name1&gt;&quot;</span><span class="p">,</span> <span class="s2">&quot;&lt;datasource_name2&gt;&quot;</span><span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="query-data-source">
+<span id="query-data-source"></span><h3>Query Data Source<a class="headerlink" href="#query-data-source" title="Permalink to this headline">¶</a></h3>
+<p><strong><code class="docutils literal"><span class="pre">groupBy</span></code> Query만 사용가능</strong></p>
+<p>nested groupBy 를 위한</p>
+<div class="highlight-json"><div class="highlight"><pre><span></span>{
+    &quot;type&quot;: &quot;query&quot;,
+    &quot;query&quot;: {
+        &quot;type&quot;: &quot;groupBy&quot;,
+        ...
+    }
+}
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="dimensionspec">
+<span id="dimensionspec"></span><h2>DimensionSpec<a class="headerlink" href="#dimensionspec" title="Permalink to this headline">¶</a></h2>
+<p>Query에서 dimension을 바꿀 수 있음</p>
+<div class="section" id="default-dimensionspec">
+<span id="default-dimensionspec"></span><h3>Default DimensionSpec<a class="headerlink" href="#default-dimensionspec" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-json"><div class="highlight"><pre><span></span>{
+  &quot;type&quot; : &quot;default&quot;,
+  &quot;dimension&quot; : &lt;dimension&gt;,
+  &quot;outputName&quot;: &lt;output_name&gt;,
+  &quot;outputType&quot;: &lt;&quot;STRING&quot;|&quot;LONG&quot;|&quot;FLOAT&quot;&gt; // STRING default
+}
+</pre></div>
+</div>
+</div>
+<div class="section" id="extraction-dimensionspec">
+<span id="extraction-dimensionspec"></span><h3>Extraction DimensionSpec<a class="headerlink" href="#extraction-dimensionspec" title="Permalink to this headline">¶</a></h3>
+<p><code class="docutils literal"><span class="pre">extraction_function</span></code>을 사용해서 Dimension을 바꿀 수 있음</p>
+<div class="highlight-json"><div class="highlight"><pre><span></span>{
+  &quot;type&quot; : &quot;extraction&quot;,
+  &quot;dimension&quot; : &lt;dimension&gt;,
+  &quot;outputName&quot; :  &lt;output_name&gt;,
+  &quot;outputType&quot;: &lt;&quot;STRING&quot;|&quot;LONG&quot;|&quot;FLOAT&quot;&gt;,
+  &quot;extractionFn&quot; : &lt;extraction_function&gt;
+}
+</pre></div>
+</div>
+</div>
+<div class="section" id="filtered-dimensionspecs">
+<span id="filtered-dimensionspecs"></span><h3>Filtered DimensionSpecs<a class="headerlink" href="#filtered-dimensionspecs" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="lookup-dimensionspecs">
+<span id="lookup-dimensionspecs"></span><h3>Lookup DimensionSpecs<a class="headerlink" href="#lookup-dimensionspecs" title="Permalink to this headline">¶</a></h3>
+</div>
+</div>
+<div class="section" id="output-types">
+<span id="output-types"></span><h2>Output Types<a class="headerlink" href="#output-types" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="regular-expression">
+<span id="regular-expression"></span><h3>Regular Expression<a class="headerlink" href="#regular-expression" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Regular Expression</li>
+<li>Partial</li>
+<li>Search Query</li>
+<li>Substring</li>
+<li>Strlen</li>
+<li>Time Format</li>
+<li>Time Parsing</li>
+<li>Javascript</li>
+<li>Lookup</li>
+<li>Registered Lookup</li>
+<li>Cascade</li>
+<li>String Format</li>
+<li>Upper and Lower</li>
+<li>Bucket</li>
+</ul>
+</div>
+</div>
+<div class="section" id="filtered-dimensionspec">
+<span id="filtered-dimensionspec"></span><h2>Filtered DimensionSpec<a class="headerlink" href="#filtered-dimensionspec" title="Permalink to this headline">¶</a></h2>
+<p><code class="docutils literal"><span class="pre">multi-value</span> <span class="pre">dimensions</span></code>에 대해서 filter를 걸 수 있음</p>
+<p>직접 value를 넣는 <code class="docutils literal"><span class="pre">listFiltered</span></code>와 정규표현식을 사용하는 <code class="docutils literal"><span class="pre">regexFiltered</span></code> 가 있음</p>
+<div class="highlight-json"><div class="highlight"><pre><span></span>{
+    &quot;type&quot; : &quot;listFiltered&quot;,
+    &quot;delegate&quot; : &lt;dimensionSpec&gt;,
+    &quot;values&quot;: &lt;array of strings&gt;,
+    &quot;isWhitelist&quot;: &lt;optional attribute for true/false, default is true&gt; }
+</pre></div>
+</div>
+<div class="highlight-json"><div class="highlight"><pre><span></span>{
+    &quot;type&quot; : &quot;regexFiltered&quot;,
+    &quot;delegate&quot; : &lt;dimensionSpec&gt;,
+    &quot;pattern&quot;: &lt;java regex pattern&gt;
+}
+</pre></div>
+</div>
+<div class="section" id="lookup-dimensionspec">
+<span id="lookup-dimensionspec"></span><h3>Lookup DimensionSpec<a class="headerlink" href="#lookup-dimensionspec" title="Permalink to this headline">¶</a></h3>
+<p><code class="docutils literal"><span class="pre">replaceMissingValueWith</span></code>는 <code class="docutils literal"><span class="pre">&quot;&quot;</span></code>로 설정하면 <code class="docutils literal"><span class="pre">null</span></code>로 설정하는 것과 같음</p>
+<p>default는 <code class="docutils literal"><span class="pre">replaceMissingValueWith</span></code>는 <code class="docutils literal"><span class="pre">null</span></code>,  <code class="docutils literal"><span class="pre">retainMissingValue</span></code>는 <code class="docutils literal"><span class="pre">false</span></code></p>
+<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="s2">&quot;lookup&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;dimension&quot;</span><span class="p">:</span><span class="s2">&quot;dimensionName&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;outputName&quot;</span><span class="p">:</span><span class="s2">&quot;dimensionOutputName&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;replaceMissingValueWith&quot;</span><span class="p">:</span><span class="s2">&quot;missing_value&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;retainMissingValue&quot;</span><span class="p">:</span><span class="kc">false</span><span class="p">,</span>
+  <span class="nt">&quot;lookup&quot;</span><span class="p">:{</span><span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;map&quot;</span><span class="p">,</span> <span class="nt">&quot;map&quot;</span><span class="p">:{</span><span class="nt">&quot;key&quot;</span><span class="p">:</span><span class="s2">&quot;value&quot;</span><span class="p">},</span> <span class="nt">&quot;isOneToOne&quot;</span><span class="p">:</span><span class="kc">false</span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="limit-spec">
+<span id="limit-spec"></span><h2>Limit Spec<a class="headerlink" href="#limit-spec" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="default-limitspec">
+<span id="default-limitspec"></span><h3>Default LimitSpec<a class="headerlink" href="#default-limitspec" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-json"><div class="highlight"><pre><span></span>{
+    &quot;type&quot;    : &quot;default&quot;,
+    &quot;limit&quot;   : &lt;integer_value&gt;,
+    &quot;columns&quot; : [list of OrderByColumnSpec],
+}
+</pre></div>
+</div>
+</div>
+<div class="section" id="orderbycolumnspec">
+<span id="orderbycolumnspec"></span><h3>OrderByColumnSpec<a class="headerlink" href="#orderbycolumnspec" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-json"><div class="highlight"><pre><span></span>{
+    &quot;dimension&quot; : &quot;&lt;Any dimension or metric name&gt;&quot;,
+    &quot;direction&quot; : &lt;&quot;ascending&quot;|&quot;descending&quot;&gt;,
+    &quot;dimensionOrder&quot; : &lt;&quot;lexicographic&quot;(default)|&quot;alphanumeric&quot;|&quot;strlen&quot;|&quot;numeric&quot;&gt;
+}
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="having">
+<span id="having"></span><h2>Having<a class="headerlink" href="#having" title="Permalink to this headline">¶</a></h2>
+<p>Query의 결과에 대해서 Filtering</p>
+<div class="highlight-json"><div class="highlight"><pre><span></span>{
+    &quot;type&quot; : &quot;filter&quot;,
+    &quot;filter&quot; : &lt;any Druid query filter&gt;
+}
+</pre></div>
+</div>
+<div class="section" id="query-filter">
+<span id="query-filter"></span><h3>Query Filter<a class="headerlink" href="#query-filter" title="Permalink to this headline">¶</a></h3>
+<ul>
+<li><p class="first">Numeric Filters</p>
+<ul>
+<li><p class="first">Equal To</p>
+<div class="highlight-json"><div class="highlight"><pre><span></span>{
+    &quot;type&quot;: &quot;equalTo&quot;,
+    &quot;aggregation&quot;: &quot;&lt;aggregate_metric&gt;&quot;,
+    &quot;value&quot;: &lt;numeric_value&gt;
+}
+</pre></div>
+</div>
+</li>
+<li><p class="first">Greater Than</p>
+<div class="highlight-json"><div class="highlight"><pre><span></span>{
+    &quot;type&quot;: &quot;greaterThan&quot;,
+    &quot;aggregation&quot;: &quot;&lt;aggregate_metric&gt;&quot;,
+    &quot;value&quot;: &lt;numeric_value&gt;
+}
+</pre></div>
+</div>
+</li>
+<li><p class="first">Less Than</p>
+<div class="highlight-json"><div class="highlight"><pre><span></span>{
+    &quot;type&quot;: &quot;lessThan&quot;,
+    &quot;aggregation&quot;: &quot;&lt;aggregate_metric&gt;&quot;,
+    &quot;value&quot;: &lt;numeric_value&gt;
+}
+</pre></div>
+</div>
+</li>
+</ul>
+</li>
+<li><p class="first">Dimension Selector Filter</p>
+<ul>
+<li><p class="first">dimSelector</p>
+<div class="highlight-json"><div class="highlight"><pre><span></span>{
+    &quot;type&quot;: &quot;dimSelector&quot;,
+    &quot;dimension&quot;: &quot;&lt;dimension&gt;&quot;,
+    &quot;value&quot;: &lt;dimension_value&gt;
+}
+</pre></div>
+</div>
+</li>
+</ul>
+</li>
+<li><p class="first">Logic expression Filters</p>
+<ul>
+<li><p class="first">AND</p>
+<div class="highlight-json"><div class="highlight"><pre><span></span>{
+    &quot;type&quot;: &quot;and&quot;,
+    &quot;havingSpecs&quot;: [&lt;having clause&gt;, &lt;having clause&gt;, ...]
+}
+</pre></div>
+</div>
+</li>
+<li><p class="first">OR</p>
+<div class="highlight-json"><div class="highlight"><pre><span></span>{
+    &quot;type&quot;: &quot;or&quot;,
+    &quot;havingSpecs&quot;: [&lt;having clause&gt;, &lt;having clause&gt;, ...]
+}
+</pre></div>
+</div>
+</li>
+<li><p class="first">NOT</p>
+<div class="highlight-json"><div class="highlight"><pre><span></span>{
+    &quot;type&quot;: &quot;not&quot;,
+    &quot;havingSpec&quot;: &lt;having clause&gt;
+}
+</pre></div>
+</div>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="aggregation-granularity">
+<span id="aggregation-granularity"></span><h2>Aggregation Granularity<a class="headerlink" href="#aggregation-granularity" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="simple-granularities">
+<span id="simple-granularities"></span><h3>Simple Granularities<a class="headerlink" href="#simple-granularities" title="Permalink to this headline">¶</a></h3>
+<p><code class="docutils literal"><span class="pre">all</span></code>, <code class="docutils literal"><span class="pre">none</span></code>, <code class="docutils literal"><span class="pre">second</span></code>, <code class="docutils literal"><span class="pre">minute</span></code>, <code class="docutils literal"><span class="pre">fifteen_minute</span></code>, <code class="docutils literal"><span class="pre">thirty_minute</span></code>, <code class="docutils literal"><span class="pre">hour</span></code>, <code class="docutils literal"><span class="pre">day</span></code>, <code class="docutils literal"><span class="pre">week</span></code>, <code class="docutils literal"><span class="pre">month</span></code>, <code class="docutils literal"><span class="pre">quarter,</span></code> <code class="docutils literal"><span class="pre">year</span></code> 의 string 값을 지원함</p>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">all</span></code>은 모든 bucket의 데이터를 하나의 bucket으로 담음.</li>
+<li><code class="docutils literal"><span class="pre">none</span></code>은 bucket에 담지 않고 index의 granularity를 사용함.
+<code class="docutils literal"><span class="pre">TimeSeries</span></code> Query에서는 <code class="docutils literal"><span class="pre">none</span></code>은 비추!</li>
+</ul>
+<p><code class="docutils literal"><span class="pre">Query</span> <span class="pre">Granularity</span></code>의 값이 <code class="docutils literal"><span class="pre">Ingestion</span> <span class="pre">Granularity</span></code>의 값보다 작으면 의미가 없음.(인덱싱이 되지 않아서)</p>
+</div>
+<div class="section" id="duration-granularities">
+<span id="duration-granularities"></span><h3>Duration Granularities<a class="headerlink" href="#duration-granularities" title="Permalink to this headline">¶</a></h3>
+<p><code class="docutils literal"><span class="pre">milliseconds</span></code> 단위로 기간을 지정해서 사용할 수 있음</p>
+<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;duration&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;duration&quot;</span><span class="p">:</span> <span class="mi">3600000</span><span class="p">,</span>
+    <span class="nt">&quot;origin&quot;</span><span class="p">:</span> <span class="s2">&quot;2018-01-01T00:30:00Z&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><code class="docutils literal"><span class="pre">origin</span></code>의 기본 값은 <code class="docutils literal"><span class="pre">1970-01-01T00:00:00Z</span></code></p>
+</div>
+<div class="section" id="period-granularities">
+<span id="period-granularities"></span><h3>Period Granularities<a class="headerlink" href="#period-granularities" title="Permalink to this headline">¶</a></h3>
+<p><code class="docutils literal"><span class="pre">years</span></code>, <code class="docutils literal"><span class="pre">months</span></code>, <code class="docutils literal"><span class="pre">weeks</span></code>, <code class="docutils literal"><span class="pre">day</span></code>, <code class="docutils literal"><span class="pre">hours</span></code>, <code class="docutils literal"><span class="pre">minutes</span></code>, <code class="docutils literal"><span class="pre">seconds</span></code> 단위로 기간을 지정</p>
+<p><a class="reference external" href="https://en.wikipedia.org/wiki/ISO_8601">ISO 8601</a> 포멧을 따른다함(P1Y, P2M, P3W, P4H, PT1H30M 등)</p>
+<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;period&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;period&quot;</span><span class="p">:</span> <span class="s2">&quot;P3M&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;timeZone&quot;</span><span class="p">:</span> <span class="s2">&quot;America/Los_Angeles&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;origin&quot;</span><span class="p">:</span> <span class="s2">&quot;2012-02-01T00:00:00-08:00&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><code class="docutils literal"><span class="pre">timeZone</span></code>은 <a class="reference external" href="http://joda-time.sourceforge.net/timezones.html">Joda Time Library</a>에서 지원하는 것을 사용할 수 있음</p>
+</div>
+</div>
+<div class="section" id="query-filter">
+<span id="id1"></span><h2>Query Filter<a class="headerlink" href="#query-filter" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="selector-filter">
+<span id="selector-filter"></span><h3>Selector Filter<a class="headerlink" href="#selector-filter" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-json"><div class="highlight"><pre><span></span>&quot;filter&quot;: {
+    &quot;type&quot;: &quot;selector&quot;,
+    &quot;dimension&quot;: &lt;dimension_string&gt;,
+    &quot;value&quot;: &lt;dimension_value_string&gt;
+}
+</pre></div>
+</div>
+</div>
+<div class="section" id="column-comparison-filter">
+<span id="column-comparison-filter"></span><h3>Column Comparison Filter<a class="headerlink" href="#column-comparison-filter" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-json"><div class="highlight"><pre><span></span>&quot;filter&quot;: { 
+    &quot;type&quot;: &quot;columnComparison&quot;,
+    &quot;dimensions&quot;: [&lt;dimension_a&gt;, &lt;dimension_b&gt;] 
+}
+</pre></div>
+</div>
+</div>
+<div class="section" id="regular-expression-filter">
+<span id="regular-expression-filter"></span><h3>Regular Expression Filter<a class="headerlink" href="#regular-expression-filter" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-json"><div class="highlight"><pre><span></span>&quot;filter&quot;: { 
+    &quot;type&quot;: &quot;regex&quot;,
+    &quot;dimension&quot;: &lt;dimension_string&gt;,
+    &quot;pattern&quot;: &lt;pattern_string&gt;
+}
+</pre></div>
+</div>
+</div>
+<div class="section" id="logical-expression-filter">
+<span id="logical-expression-filter"></span><h3>Logical Expression Filter<a class="headerlink" href="#logical-expression-filter" title="Permalink to this headline">¶</a></h3>
+<ul>
+<li><p class="first">AND</p>
+<div class="highlight-json"><div class="highlight"><pre><span></span>&quot;filter&quot;: { &quot;type&quot;: &quot;and&quot;, &quot;fields&quot;: [&lt;filter&gt;, &lt;filter&gt;, ...] }
+</pre></div>
+</div>
+</li>
+<li><p class="first">OR</p>
+<div class="highlight-json"><div class="highlight"><pre><span></span>&quot;filter&quot;: { &quot;type&quot;: &quot;or&quot;, &quot;fields&quot;: [&lt;filter&gt;, &lt;filter&gt;, ...] }
+</pre></div>
+</div>
+</li>
+<li><p class="first">NOT</p>
+<div class="highlight-json"><div class="highlight"><pre><span></span>&quot;filter&quot;: { &quot;type&quot;: &quot;not&quot;, &quot;field&quot;: &lt;filter&gt; }
+</pre></div>
+</div>
+</li>
+</ul>
+</div>
+<div class="section" id="javascript-filter">
+<span id="javascript-filter"></span><h3>Javascript Filter<a class="headerlink" href="#javascript-filter" title="Permalink to this headline">¶</a></h3>
+<p><code class="docutils literal"><span class="pre">return</span> <span class="pre">value</span></code>가 <code class="docutils literal"><span class="pre">true</span></code>인 것들만 남김</p>
+<div class="highlight-json"><div class="highlight"><pre><span></span>{
+    &quot;type&quot; : &quot;javascript&quot;,
+    &quot;dimension&quot; : &lt;dimension_string&gt;,
+    &quot;function&quot; : &quot;function(value) { &lt;...&gt; }&quot;
+}
+</pre></div>
+</div>
+</div>
+<div class="section" id="extraction-filter">
+<span id="extraction-filter"></span><h3>Extraction Filter<a class="headerlink" href="#extraction-filter" title="Permalink to this headline">¶</a></h3>
+<p><code class="docutils literal"><span class="pre">extraction</span> <span class="pre">function</span></code>을 사용해서 필터링</p>
+</div>
+<div class="section" id="search-filter">
+<span id="search-filter"></span><h3>Search Filter<a class="headerlink" href="#search-filter" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-json"><div class="highlight"><pre><span></span>{
+    &quot;filter&quot;: {
+        &quot;type&quot;: &quot;search&quot;,
+        &quot;dimension&quot;: &lt;dimension_string&gt;,
+        &quot;query&quot;: {
+          &quot;type&quot;: &lt;search_query_type&gt;,
+          &quot;value&quot;: &quot;value_1&quot; 
+        }        
+    }
+}
+</pre></div>
+</div>
+<ul>
+<li><p class="first">Contains</p>
+<p>| property      | description                                                  | required?             |
+| ------------- | ------------------------------------------------------------ | --------------------- |
+| type          | This String should always be &quot;contains&quot;.                     | yes                   |
+| value         | A String value to run the search over.                       | yes                   |
+| caseSensitive | Whether two string should be compared as case sensitive or not | no (default == false) |</p>
+</li>
+<li><p class="first">Insensitive Contains</p>
+<p>| property | description                                          | required? |
+| -------- | ---------------------------------------------------- | --------- |
+| type     | This String should always be &quot;insensitive_contains&quot;. | yes       |
+| value    | A String value to run the search over.               | yes       |</p>
+</li>
+<li><p class="first">Fragment</p>
+<p>| property      | description                                                  | required? |
+| ------------- | ------------------------------------------------------------ | --------- |
+| type          | This String should always be &quot;fragment&quot;.                     | yes       |
+| values        | A JSON array of String values to run the search over.        | yes       |
+| caseSensitive | Whether strings should be compared as case sensitive or not. Default: false(insensitive) | no        |</p>
+</li>
+</ul>
+</div>
+<div class="section" id="in-filter">
+<span id="in-filter"></span><h3>In Filter<a class="headerlink" href="#in-filter" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-json"><div class="highlight"><pre><span></span>{
+    &quot;type&quot;: &quot;in&quot;,
+    &quot;dimension&quot;: &lt;dimension_string&gt;,
+    &quot;values&quot;: [&quot;value_1&quot;, &quot;value_2&quot;, &quot;value_3&quot;]
+}
+</pre></div>
+</div>
+</div>
+<div class="section" id="like-filter">
+<span id="like-filter"></span><h3>Like Filter<a class="headerlink" href="#like-filter" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;like&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;dimension&quot;</span><span class="p">:</span> <span class="s2">&quot;last_name&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;pattern&quot;</span><span class="p">:</span> <span class="s2">&quot;D%&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>| property     | type                                                         | description                                                  | required? |
+| ------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | --------- |
+| type         | String                                                       | This should always be &quot;like&quot;.                                | yes       |
+| dimension    | String                                                       | The dimension to filter on                                   | yes       |
+| pattern      | String                                                       | LIKE pattern, such as &quot;foo%&quot; or &quot;___bar&quot;.                    | yes       |
+| escape       | String                                                       | An escape character that can be used to escape special characters. | no        |
+| extractionFn | <a class="reference external" href="http://druid.io/docs/0.12.0/querying/filters.html#filtering-with-extraction-functions">Extraction function</a> | Extraction function to apply to the dimension                | no        |</p>
+</div>
+<div class="section" id="bound-filter">
+<span id="bound-filter"></span><h3>Bound Filter<a class="headerlink" href="#bound-filter" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="interval-filter">
+<span id="interval-filter"></span><h3>Interval Filter<a class="headerlink" href="#interval-filter" title="Permalink to this headline">¶</a></h3>
+</div>
+</div>
+<div class="section" id="aggregations">
+<span id="aggregations"></span><h2>Aggregations<a class="headerlink" href="#aggregations" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="count-aggregator">
+<span id="count-aggregator"></span><h3>Count Aggregator<a class="headerlink" href="#count-aggregator" title="Permalink to this headline">¶</a></h3>
+<p>row count를 기반으로 counting함</p>
+<div class="highlight-json"><div class="highlight"><pre><span></span>{ &quot;type&quot; : &quot;count&quot;, &quot;name&quot; : &lt;output_name&gt; }
+</pre></div>
+</div>
+</div>
+<div class="section" id="sum-aggregator">
+<span id="sum-aggregator"></span><h3>Sum Aggregator<a class="headerlink" href="#sum-aggregator" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">longSum</span></code>, <code class="docutils literal"><span class="pre">doubleSum</span></code>, <code class="docutils literal"><span class="pre">floatSum</span></code></li>
+<li><code class="docutils literal"><span class="pre">doubleMin</span></code>, <code class="docutils literal"><span class="pre">doubleMax</span></code></li>
+<li><code class="docutils literal"><span class="pre">floatMin</span></code>, <code class="docutils literal"><span class="pre">floatMax</span></code></li>
+</ul>
+</div>
+<div class="section" id="first-last-aggregator">
+<span id="first-last-aggregator"></span><h3>First/Last Aggregator<a class="headerlink" href="#first-last-aggregator" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">doubleFirst</span></code>, <code class="docutils literal"><span class="pre">floaFirst</span></code>, <code class="docutils literal"><span class="pre">longFirst</span></code></li>
+<li><code class="docutils literal"><span class="pre">doubleLast</span></code>, <code class="docutils literal"><span class="pre">floatLast</span></code>, <code class="docutils literal"><span class="pre">longLast</span></code></li>
+</ul>
+</div>
+<div class="section" id="javascript-aggregator">
+<span id="javascript-aggregator"></span><h3>Javascript Aggregator<a class="headerlink" href="#javascript-aggregator" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-json"><div class="highlight"><pre><span></span>{ &quot;type&quot;: &quot;javascript&quot;,
+  &quot;name&quot;: &quot;&lt;output_name&gt;&quot;,
+  &quot;fieldNames&quot;  : [ &lt;column1&gt;, &lt;column2&gt;, ... ],
+  &quot;fnAggregate&quot; : &quot;function(current, column1, column2, ...) {
+                     &lt;updates partial aggregate (current) based on the current row values&gt;
+                     return &lt;updated partial aggregate&gt;
+                   }&quot;,
+  &quot;fnCombine&quot;   : &quot;function(partialA, partialB) { return &lt;combined partial results&gt;; }&quot;,
+  &quot;fnReset&quot;     : &quot;function()                   { return &lt;initial value&gt;; }&quot;
+}
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="approximate-aggregations">
+<span id="approximate-aggregations"></span><h2>Approximate Aggregations<a class="headerlink" href="#approximate-aggregations" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="cardinality-aggregator">
+<span id="cardinality-aggregator"></span><h3>Cardinality Aggregator<a class="headerlink" href="#cardinality-aggregator" title="Permalink to this headline">¶</a></h3>
+<p>dimension의 cardinality를 <a class="reference external" href="http://algo.inria.fr/flajolet/Publications/FlFuGaMe07.pdf">HyperLogLog Algorithm</a>을 사용하여 계산함.</p>
+<div class="highlight-json"><div class="highlight"><pre><span></span>{
+  &quot;type&quot;: &quot;cardinality&quot;,
+  &quot;name&quot;: &quot;&lt;output_name&gt;&quot;,
+  &quot;fields&quot;: [ &lt;dimension1&gt;, &lt;dimension2&gt;, ... ],
+  &quot;byRow&quot;: &lt;false | true&gt; # (optional, defaults to false),
+  &quot;round&quot;: &lt;false | true&gt; # (optional, defaults to false)
+}
+</pre></div>
+</div>
+<div class="section" id="cardinality-by-value">
+<span id="cardinality-by-value"></span><h4>Cardinality by value<a class="headerlink" href="#cardinality-by-value" title="Permalink to this headline">¶</a></h4>
+<p><code class="docutils literal"><span class="pre">byRow</span></code>를 <code class="docutils literal"><span class="pre">false</span></code>를 해놓으면(default false) 값에 대해서 cadinality를 계산함</p>
+<div class="highlight-sql"><div class="highlight"><pre><span></span><span class="k">SELECT</span> <span class="k">COUNT</span><span class="p">(</span><span class="k">DISTINCT</span><span class="p">(</span><span class="n">dimension</span><span class="p">))</span> <span class="k">FROM</span> <span class="o">&lt;</span><span class="n">datasource</span><span class="o">&gt;</span><span class="p">;</span>
+
+<span class="k">SELECT</span> <span class="k">COUNT</span><span class="p">(</span><span class="k">DISTINCT</span><span class="p">(</span><span class="n">value</span><span class="p">))</span> <span class="k">FROM</span> <span class="p">(</span>
+  <span class="k">SELECT</span> <span class="n">dim_1</span> <span class="k">as</span> <span class="n">value</span> <span class="k">FROM</span> <span class="o">&lt;</span><span class="n">datasource</span><span class="o">&gt;</span>
+  <span class="k">UNION</span>
+  <span class="k">SELECT</span> <span class="n">dim_2</span> <span class="k">as</span> <span class="n">value</span> <span class="k">FROM</span> <span class="o">&lt;</span><span class="n">datasource</span><span class="o">&gt;</span>
+  <span class="k">UNION</span>
+  <span class="k">SELECT</span> <span class="n">dim_3</span> <span class="k">as</span> <span class="n">value</span> <span class="k">FROM</span> <span class="o">&lt;</span><span class="n">datasource</span><span class="o">&gt;</span>
+<span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="cardinality-by-row">
+<span id="cardinality-by-row"></span><h4>Cardinality by row<a class="headerlink" href="#cardinality-by-row" title="Permalink to this headline">¶</a></h4>
+<p><code class="docutils literal"><span class="pre">byRow</span></code>를 <code class="docutils literal"><span class="pre">true</span></code> 이면 dimension의 조합 cardinality를 계산함</p>
+<div class="highlight-sql"><div class="highlight"><pre><span></span><span class="k">SELECT</span> <span class="k">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">)</span> <span class="k">FROM</span> <span class="p">(</span> <span class="k">SELECT</span> <span class="n">DIM1</span><span class="p">,</span> <span class="n">DIM2</span><span class="p">,</span> <span class="n">DIM3</span> <span class="k">FROM</span> <span class="o">&lt;</span><span class="n">datasource</span><span class="o">&gt;</span> <span class="k">GROUP</span> <span class="k">BY</span> <span class="n">DIM1</span><span class="p">,</span> <span class="n">DIM2</span><span class="p">,</span> <span class="n">DIM3</span> <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="hyperunique-aggregator">
+<span id="hyperunique-aggregator"></span><h3>HyperUnique Aggregator<a class="headerlink" href="#hyperunique-aggregator" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-json"><div class="highlight"><pre><span></span>{ 
+  &quot;type&quot; : &quot;hyperUnique&quot;,
+  &quot;name&quot; : &lt;output_name&gt;,
+  &quot;fieldName&quot; : &lt;metric_name&gt;,
+  &quot;isInputHyperUnique&quot; : false,
+  &quot;round&quot; : false
+}
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="miscellaneous-aggregations">
+<span id="miscellaneous-aggregations"></span><h2>Miscellaneous Aggregations<a class="headerlink" href="#miscellaneous-aggregations" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="filtered-aggregator">
+<span id="filtered-aggregator"></span><h3>Filtered Aggregator<a class="headerlink" href="#filtered-aggregator" title="Permalink to this headline">¶</a></h3>
+<p>필터링 된 값만 집계함</p>
+<p>필터 + 집계를 한번에 할 수 있음</p>
+<div class="highlight-json"><div class="highlight"><pre><span></span>{
+  &quot;type&quot; : &quot;filtered&quot;,
+  &quot;filter&quot; : {
+    &quot;type&quot; : &quot;selector&quot;,
+    &quot;dimension&quot; : &lt;dimension&gt;,
+    &quot;value&quot; : &lt;dimension value&gt;
+  }
+  &quot;aggregator&quot; : &lt;aggregation&gt;
+}
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="post-aggregations">
+<span id="post-aggregations"></span><h2>Post Aggregations<a class="headerlink" href="#post-aggregations" title="Permalink to this headline">¶</a></h2>
+<p>aggregation된 결과에 다른 처리를 해야하는 경우 사용</p>
+<div class="section" id="arithmetic-post-aggregator">
+<span id="arithmetic-post-aggregator"></span><h3>Arithmetic post-aggregator<a class="headerlink" href="#arithmetic-post-aggregator" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-json"><div class="highlight"><pre><span></span>postAggregation : {
+  &quot;type&quot;  : &quot;arithmetic&quot;,
+  &quot;name&quot;  : &lt;output_name&gt;,
+  &quot;fn&quot;    : &lt;arithmetic_function&gt;,
+  &quot;fields&quot;: [&lt;post_aggregator&gt;, &lt;post_aggregator&gt;, ...],
+  &quot;ordering&quot; : &lt;null (default), or &quot;numericFirst&quot;&gt;
+}
+</pre></div>
+</div>
+<p><code class="docutils literal"><span class="pre">arithmetic_function</span></code> = [<code class="docutils literal"><span class="pre">+</span></code>, <code class="docutils literal"><span class="pre">-</span></code>, <code class="docutils literal"><span class="pre">*</span></code>, <code class="docutils literal"><span class="pre">/</span></code>, <code class="docutils literal"><span class="pre">quotient</span></code>]</p>
+</div>
+<div class="section" id="field-accessor-post-aggregators">
+<span id="field-accessor-post-aggregators"></span><h3>Field accessor post-aggregators<a class="headerlink" href="#field-accessor-post-aggregators" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="constant-post-aggregator">
+<span id="constant-post-aggregator"></span><h3>Constant post-aggregator<a class="headerlink" href="#constant-post-aggregator" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="greatest-least-post-aggregators">
+<span id="greatest-least-post-aggregators"></span><h3>Greatest / Least post-aggregators<a class="headerlink" href="#greatest-least-post-aggregators" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="javascript-post-aggregator">
+<span id="javascript-post-aggregator"></span><h3>JavaScript post-aggregator<a class="headerlink" href="#javascript-post-aggregator" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="hyperunique-cardinality-post-aggregator">
+<span id="hyperunique-cardinality-post-aggregator"></span><h3>HyperUnique Cardinality post-aggregator<a class="headerlink" href="#hyperunique-cardinality-post-aggregator" title="Permalink to this headline">¶</a></h3>
+<p>union dataSource를 사용하려면 쿼리를 Broker에게 보내야함</p>
+</div>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="08.updating_data.html" class="btn btn-neutral float-right" title="Updating Existing Data" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="06.group_by_query.html" class="btn btn-neutral" title="GroupBy Query" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, Yunseop Song.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'1.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+  
+ 
+<!-- Google Analytics -->
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-82138310-1', 'auto');
+ga('send', 'pageview');
+</script>
+<!-- End Google Analytics -->
+
+
+</body>
+</html>
