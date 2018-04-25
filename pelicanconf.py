@@ -6,16 +6,35 @@ import glob
 
 AUTHOR = 'Yunseop Song'
 SITENAME = '전지적 송윤섭시점 TIL'
-SITEURL = ''
+SITEURL = 'https://til.songyunseop.com'
+TIMEZONE = 'Asia/Seoul'
+DEFAULT_LANG = 'ko'
+RELATIVE_URLS = True
 
+PAGE_PATHS = [os.getcwd()+"/README.md"]
 ARTICLE_PATHS = glob.glob(os.getcwd()+"/*/*.md")
-# ARTICLE_PATHS.append(os.getcwd()+"/README.md")
+
+DEFAULT_PAGINATION = 4
+DEFAULT_CATEGORY='uncategorized'
+USE_FOLDER_AS_CATEGORY=True
+DISPLAY_PAGES_ON_MENU=True
+DISPLAY_CATEGORIES_ON_MENU=True
+FILENAME_METADATA = '(?P<title>.*)'
 
 OUTPUT_PATH = 'public/'
 
-TIMEZONE = 'Asia/Seoul'
+DISQUS_SITENAME = 'songyunseop'
+GITHUB_URL = 'https://github.com/songyunseop/til'
 
-DEFAULT_LANG = 'ko'
+LINKS = (
+    ('전지적 송윤섭시점 블로그', 'https://songyunseop.com/'),
+    ('전지적 송윤섭시점 기술블로그', 'https://tech.songyunseop.com/'),
+)
+
+SOCIAL = (
+    ('Github', 'https://github.com/songyunseop'),
+    ('Facebook', 'https://facebook.com/yunseop.song.9'),
+)
 
 # Feed generation is usually not desired when developing
 FEED_ALL_ATOM = None
@@ -24,26 +43,11 @@ TRANSLATION_FEED_ATOM = None
 AUTHOR_FEED_ATOM = None
 AUTHOR_FEED_RSS = None
 
-# Blogroll
-LINKS = (
-    ('Blog', 'https://songyunseop.com/'),
-    ('Tech', 'https://tech.songyunseop.com/'),
-)
+DIRECT_TEMPLATES = ['index', 'categories', 'authors', 'archives']
 
-# Social widget
-SOCIAL = (('You can add links in your config file', '#'),
-          ('Another social link', '#'),)
+PLUGIN_PATHS = ["custom-plugins", "pelican-plugins"]
+PLUGINS = ["auto-title", "filetime_from_git", "sitemap"]
 
-DEFAULT_PAGINATION = 10
-DEFAULT_CATEGORY='TIL'
-USE_FOLDER_AS_CATEGORY=True
-DISPLAY_PAGES_ON_MENU=False
-
-# Uncomment following line if you want document-relative URLs when developing
-#RELATIVE_URLS = True
-
-DEFAULT_DATE = (2018, 1, 1)
-FILENAME_METADATA = '(?P<title>.*)'
-
-DISQUS_SITENAME = 'songyunseop'
-GITHUB_URL = 'https://github.com/songyunseop/til'
+SITEMAP = {
+    'format': 'xml'
+}
