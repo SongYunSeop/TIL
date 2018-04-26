@@ -3,7 +3,7 @@
 실시간 분석을 지원하는 빅데이터 아키텍쳐
 대량의 데이터를 실시간으로 분석하기 위해서 Batch로 만든 데이터와 실시간 데이터를 혼합해서 사용하는 방식
 
-![](http://lambda-architecture.net/img/la-overview_small.png)
+![overview](http://lambda-architecture.net/img/la-overview_small.png)
 
 ## 데이터 파이프 라인
 
