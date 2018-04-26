@@ -20,6 +20,7 @@ sudo yum install -y java-1.8.0-openjdk-devel.x86_64
 4. 설정 파일들 수정(jvm.config, runtime.properties)
 
 5. metadata storage 설정(MySQL)
+   `mysql-metadata-storage` extension은 기본적으로 포함되어 있지 않으니 다운받아야함.
 
    ```sh
    # /opt/druid/druid-0.12.0/conf/druid/_common/common.properties
@@ -69,15 +70,18 @@ sudo yum install -y java-1.8.0-openjdk-devel.x86_64
    druid.storage.baseKey=druid/segments
    druid.s3.accessKey=XXXXXXXXXXXXXXX
    druid.s3.secretKey=XXXXXXXXXXXXXXX
+
+   druid.indexer.logs.type=s3
+   druid.indexer.logs.s3Bucket=druid-bucket
+   druid.indexer.logs.s3Prefix=druid/indexing-logs
    ```
 
 3. 라이브러리 추가
 
    ```sh
-   $ cp -r /usr/lib/hadoop/client/* /opt/druid/druid-0.12.0/hadoop-dependencies/hadoop-client/emr/*
+   $ cp -r /usr/lib/hadoop/client/* /opt/druid/druid-0.12.0/hadoop-dependencies/hadoop-client/emr-client/*
    $ cp -r /usr/share/aws/emr/emrfs/* /opt/druid/emrfs
    $ cp -r /usr/share/aws/aws-sdk-java/* /opt/druid/aws-sdk-java
-
    ```
 
 4. bin/node.sh 수정
@@ -107,6 +111,14 @@ sudo yum install -y java-1.8.0-openjdk-devel.x86_64
    	},
    	"hadoopDependencyCoordinates": ["org.apache.hadoop:hadoop-client:emr-client"]
    }
+   ```
+
+7. `/mnt` 디렉토리에 `s3`, `var` 디렉토리 생성
+
+   ```sh
+   $ ll /mnt
+   drwxr-xr-x 2 druid druid 6 Apr 26 07:09 s3
+   drwxr-xr-x 2 druid druid 6 Apr 26 07:01 var
    ```
 
 ## Refer
