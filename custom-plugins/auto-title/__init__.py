@@ -1,7 +1,10 @@
 from pelican import signals
+from pelican.contents import Static
 from bs4 import BeautifulSoup
 
 def content_object_init_handler(content):
+    if isinstance(content, Static):
+        return
     replace_head_to_title(content)
 
 def replace_head_to_title(content):

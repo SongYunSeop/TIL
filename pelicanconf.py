@@ -13,6 +13,7 @@ RELATIVE_URLS = True
 
 PAGE_PATHS = [os.getcwd()+"/README.md"]
 ARTICLE_PATHS = glob.glob(os.getcwd()+"/*/*.md")
+STATIC_PATHS = ['static']
 
 DEFAULT_PAGINATION = 4
 DEFAULT_CATEGORY='uncategorized'
@@ -23,7 +24,7 @@ FILENAME_METADATA = '(?P<title>.*)'
 
 OUTPUT_PATH = 'public/'
 
-DISQUS_SITENAME = 'songyunseop'
+DISQUS_SITENAME = 'til-songyunseop'
 GITHUB_URL = 'https://github.com/songyunseop/til'
 
 LINKS = (
@@ -34,6 +35,7 @@ LINKS = (
 SOCIAL = (
     ('Github', 'https://github.com/songyunseop'),
     ('Facebook', 'https://facebook.com/yunseop.song.9'),
+    ('LinkedIn', 'https://www.linkedin.com/in/yunseop-song-698226110'),
 )
 
 # Feed generation is usually not desired when developing
