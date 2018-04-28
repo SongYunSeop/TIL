@@ -24,7 +24,7 @@ FILENAME_METADATA = '(?P<title>.*)'
 
 OUTPUT_PATH = 'public/'
 
-DISQUS_SITENAME = 'til-songyunseop'
+DISQUS_SITENAME = 'songyunseop'
 GITHUB_URL = 'https://github.com/songyunseop/til'
 
 LINKS = (

@@ -22,24 +22,24 @@ sudo yum install -y java-1.8.0-openjdk-devel.x86_64
 5. metadata storage 설정(MySQL)
    `mysql-metadata-storage` extension은 기본적으로 포함되어 있지 않으니 다운받아야함.
 
-   ```sh
-   # /opt/druid/druid-0.12.0/conf/druid/_common/common.properties
-   druid.extensions.loadList=["druid-kafka-eight","mysql-metadata-storage", "druid-s3-extensions"]
-   druid.metadata.storage.type=mysql
-   druid.metadata.storage.connector.connectURI=jdbc:mysql://{host}:{port}/{database}
-   druid.metadata.storage.connector.user=user
-   druid.metadata.storage.connector.password=password
-   ```
+```sh
+# /opt/druid/druid-0.12.0/conf/druid/_common/common.properties
+druid.extensions.loadList=["druid-kafka-eight","mysql-metadata-storage", "druid-s3-extensions"]
+druid.metadata.storage.type=mysql
+druid.metadata.storage.connector.connectURI=jdbc:mysql://{host}:{port}/{database}
+druid.metadata.storage.connector.user=user
+druid.metadata.storage.connector.password=password
+```
 
 6. 실행
 
-   ```sh
-   $ ./bin/historical.sh start
-   $ ./bin/overlord.sh start
-   $ ./bin/middleManager.sh start
-   $ ./bin/broker.sh start
-   $ ./bin/coordinator.sh start
-   ```
+```sh
+$ ./bin/historical.sh start
+$ ./bin/overlord.sh start
+$ ./bin/middleManager.sh start
+$ ./bin/broker.sh start
+$ ./bin/coordinator.sh start
+```
 
    다운 타임없이 재실행을 하고 싶은 경우 다음과 같이 추천함
 
@@ -62,64 +62,64 @@ sudo yum install -y java-1.8.0-openjdk-devel.x86_64
 2. S3 extension 추가 및 Deep Storage 설정
    `cont/druid/_common/common.runtime.properties`
 
-   ```sh
-   druid.extensions.loadList = ["druid-s3-extensions"]
+```sh
+druid.extensions.loadList = ["druid-s3-extensions"]
 
-   druid.storage.type=s3
-   druid.storage.bucket=druid-bucket
-   druid.storage.baseKey=druid/segments
-   druid.s3.accessKey=XXXXXXXXXXXXXXX
-   druid.s3.secretKey=XXXXXXXXXXXXXXX
+druid.storage.type=s3
+druid.storage.bucket=druid-bucket
+druid.storage.baseKey=druid/segments
+druid.s3.accessKey=XXXXXXXXXXXXXXX
+druid.s3.secretKey=XXXXXXXXXXXXXXX
 
-   druid.indexer.logs.type=s3
-   druid.indexer.logs.s3Bucket=druid-bucket
-   druid.indexer.logs.s3Prefix=druid/indexing-logs
-   ```
+druid.indexer.logs.type=s3
+druid.indexer.logs.s3Bucket=druid-bucket
+druid.indexer.logs.s3Prefix=druid/indexing-logs
+```
 
 3. 라이브러리 추가
 
-   ```sh
-   $ cp -r /usr/lib/hadoop/client/* /opt/druid/druid-0.12.0/hadoop-dependencies/hadoop-client/emr-client/*
-   $ cp -r /usr/share/aws/emr/emrfs/* /opt/druid/emrfs
-   $ cp -r /usr/share/aws/aws-sdk-java/* /opt/druid/aws-sdk-java
-   ```
+```sh
+$ cp -r /usr/lib/hadoop/client/* /opt/druid/druid-0.12.0/hadoop-dependencies/hadoop-client/emr-client/*
+$ cp -r /usr/share/aws/emr/emrfs/* /opt/druid/emrfs
+$ cp -r /usr/share/aws/aws-sdk-java/* /opt/druid/aws-sdk-java
+```
 
 4. bin/node.sh 수정
    middleManager를 실행할 때 library를 추가함
 
-   ```sh
-   JAVA_HOME=/usr/lib/jvm/java
-   if [ "$nodeType" == "middleManager" ]; then
-   	LIB_DIR=$LIB_DIR/*:/opt/druid/emrfs/conf:/opt/druid/emrfs/lib/*:/opt/druid/emrfs/auxlib/*:/opt/druid/aws-java-sdk
-   fi
-   ```
+```sh
+JAVA_HOME=/usr/lib/jvm/java
+if [ "$nodeType" == "middleManager" ]; then
+LIB_DIR=$LIB_DIR/*:/opt/druid/emrfs/conf:/opt/druid/emrfs/lib/*:/opt/druid/emrfs/auxlib/*:/opt/druid/aws-java-sdk
+fi
+```
 
 5. middleManager 재시작
 
 6. index 파일에 s3 accessKey, secretKey 추가 && `hadoopDependencyCoordinates` emr로 설정
 
-   ```json
-   {
-       ...
-       "spec": {
-           "tuningConfig": {
-               "jobProperties": {
-                   "fs.s3.awsAccessKeyId" : "XXXXXXXXXXXXXXX",
-                   "fs.s3.awsSecretAccessKey" : "XXXXXXXXXXXXXXX"
-               }
-           }
-   	},
-   	"hadoopDependencyCoordinates": ["org.apache.hadoop:hadoop-client:emr-client"]
-   }
-   ```
+```json
+{
+    ...
+    "spec": {
+        "tuningConfig": {
+            "jobProperties": {
+                "fs.s3.awsAccessKeyId" : "XXXXXXXXXXXXXXX",
+                "fs.s3.awsSecretAccessKey" : "XXXXXXXXXXXXXXX"
+            }
+        }
+    },
+    "hadoopDependencyCoordinates": ["org.apache.hadoop:hadoop-client:emr-client"]
+}
+```
 
 7. `/mnt` 디렉토리에 `s3`, `var` 디렉토리 생성
 
-   ```sh
-   $ ll /mnt
-   drwxr-xr-x 2 druid druid 6 Apr 26 07:09 s3
-   drwxr-xr-x 2 druid druid 6 Apr 26 07:01 var
-   ```
+```sh
+$ ll /mnt
+drwxr-xr-x 2 druid druid 6 Apr 26 07:09 s3
+drwxr-xr-x 2 druid druid 6 Apr 26 07:01 var
+```
 
 ## Refer
 
