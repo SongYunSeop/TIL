@@ -9,7 +9,7 @@ SITENAME = '전지적 송윤섭시점 TIL'
 SITEURL = 'https://til.songyunseop.com'
 TIMEZONE = 'Asia/Seoul'
 DEFAULT_LANG = 'ko'
-RELATIVE_URLS = True
+# RELATIVE_URLS = True
 
 PAGE_PATHS = [os.getcwd()+"/README.md"]
 ARTICLE_PATHS = glob.glob(os.getcwd()+"/*/*.md")
