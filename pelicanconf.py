@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*- #
 from __future__ import unicode_literals
 import os
+import platform
 import glob
 
 AUTHOR = 'Yunseop Song'
@@ -9,10 +10,11 @@ SITENAME = '전지적 송윤섭시점 TIL'
 SITEURL = 'https://til.songyunseop.com'
 TIMEZONE = 'Asia/Seoul'
 DEFAULT_LANG = 'ko'
-# RELATIVE_URLS = True
+if platform.system() == 'Darwin':
+    SITEURL = 'http://localhost:8000'
 
 PAGE_PATHS = [os.getcwd()+"/README.md"]
-ARTICLE_PATHS = glob.glob(os.getcwd()+"/*/*.md")
+ARTICLE_PATHS = glob.glob(os.getcwd()+"/react/*.md")
 STATIC_PATHS = ['static']
 
 DEFAULT_PAGINATION = 4
@@ -23,6 +25,11 @@ DISPLAY_CATEGORIES_ON_MENU=True
 FILENAME_METADATA = '(?P<title>.*)'
 
 OUTPUT_PATH = 'public/'
+
+ARTICLE_URL = 'til/{category}/{date:%Y}/{date:%m}/{date:%d}/{slug}/'
+ARTICLE_SAVE_AS = 'til/{category}/{date:%Y}/{date:%m}/{date:%d}/{slug}/index.html'
+PAGE_URL = 'pages/{slug}/'
+PAGE_SAVE_AS = 'pages/{slug}/index.html'
 
 DISQUS_SITENAME = 'songyunseop'
 GITHUB_URL = 'https://github.com/songyunseop/til'

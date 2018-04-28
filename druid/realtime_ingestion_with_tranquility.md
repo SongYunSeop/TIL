@@ -105,3 +105,58 @@ $ ./bin/tranquility kafka -configFile {CONFIG_FILE_PATH}
 ```
 
 드루이드 모든 컴포넌트의 jvm.config에 `-Djava.io.tmpdir=/tmp/druid` 로 설정
+
+## Troubleshootings
+
+[Github Trable Page](https://github.com/druid-io/tranquility/blob/master/docs/trouble.md)
+
+### 이벤트가 성공적으로 보내졌지만 드루이드에서는 데이터가 보이지 않음.
+
+가장 일반적인 이유는 이벤트의 타임스탬프가 설정한 `windowPeriod` 밖에 있기 때문이다. 기본적으로 10분으로 설정되어 있는데, 이는 이벤트의 타임스탬프가 10분 전보다 더 이전의 데이터들은 드랍시킨다. 다음을 확인하자.
+
+1. `windowPeriod` 안의 이벤트를 보내는지 확인.  [Overview](https://github.com/druid-io/tranquility/blob/master/docs/overview.md#segment-granularity-and-window-period)를 보면 어떻게 동작하는지 알 수 있다.
+2. 적절한 `Timstamper`와 `TimestampSpec`를 사용하고 있는지 확인. 
+
+### Task가 종료되지 않음.
+
+가장 일반적인 이유는 `handoff`가 발생하지 않아서 그렇다. `historical` 노드가 realtime task로 생성된 세그먼트를 로드하지 않아서.([Overview](https://github.com/druid-io/tranquility/blob/master/docs/overview.md)를 보면 어떻게 동작하는지 알 수 있다.)
+
+`Coordinator`와 `Historical` 노드가 올라와 있는지 확인하고, `Historical` 노드에 새로운 세그먼트를 저장할 충분한 용량이 있는지 확인. 만약 그렇지 않다면 `Coordinator` 로그에 warning이나 error 메세지가 출력됨.
+
+또 다른 가능성은 `windowPeriod`가 너무 길기 때문. `segmentGranularity`의 interval이 넘고 `windowPeriod`가 지나야만 `Hand-Off`가 일어난다.
+
+### Jackson이나 Curator Exception이 발생함.
+
+Most of Tranquility uses com.fasterxml.jackson 2.4.x, but Curator is still built against the older org.codehaus.jackson.
+It requires at least 1.9.x, and people have reported strange errors when using older versions of Jackson (usually
+1.8.x). Tranquility tries to pull in Jackson 1.9.x, but this may be overridden in your higher-level project file. If
+you see any strange Jackson or Curator errors, try confirming that you are using the right version of Jackson. These
+errors might include the following:
+
+- java.io.NotSerializableException: org.apache.curator.x.discovery.ServiceInstance
+- org.codehaus.jackson.map.exc.UnrecognizedPropertyException: Unrecognized field "name" (Class org.apache.curator.x.discovery.ServiceInstance), not marked as ignorable
+
+To force a particular Jackson version, you can use something like this in your POM:
+
+```xml
+<dependency>
+    <groupId>org.codehaus.jackson</groupId>
+    <artifactId>jackson-jaxrs</artifactId>
+    <version>1.9.13</version>
+</dependency>
+<dependency>
+    <groupId>org.codehaus.jackson</groupId>
+    <artifactId>jackson-xc</artifactId>
+    <version>1.9.13</version>
+</dependency>
+<dependency>
+    <groupId>org.codehaus.jackson</groupId>
+    <artifactId>jackson-core-asl</artifactId>
+    <version>1.9.13</version>
+</dependency>
+<dependency>
+    <groupId>org.codehaus.jackson</groupId>
+    <artifactId>jackson-mapper-asl</artifactId>
+    <version>1.9.13</version>
+</dependency>
+```
