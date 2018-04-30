@@ -33,6 +33,7 @@ PAGE_SAVE_AS = 'pages/{slug}/index.html'
 
 DISQUS_SITENAME = 'songyunseop'
 GITHUB_URL = 'https://github.com/songyunseop/til'
+GOOGLE_ANALYTICS = 'UA-82138310-3'
 
 LINKS = (
     ('전지적 송윤섭시점 블로그', 'https://songyunseop.com/'),
