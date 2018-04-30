@@ -7,7 +7,7 @@ import glob
 
 AUTHOR = 'Yunseop Song'
 SITENAME = '전지적 송윤섭시점 TIL'
-SITEURL = 'https://til.songyunseop.com'
+SITEURL = 'https://til.songyunseop.com/til'
 TIMEZONE = 'Asia/Seoul'
 DEFAULT_LANG = 'ko'
 if platform.system() == 'Darwin':
@@ -26,8 +26,8 @@ FILENAME_METADATA = '(?P<title>.*)'
 
 OUTPUT_PATH = 'public/'
 
-ARTICLE_URL = 'til/{category}/{date:%Y}/{date:%m}/{date:%d}/{slug}/'
-ARTICLE_SAVE_AS = 'til/{category}/{date:%Y}/{date:%m}/{date:%d}/{slug}/index.html'
+ARTICLE_URL = '{category}/{date:%Y}/{date:%m}/{date:%d}/{slug}/'
+ARTICLE_SAVE_AS = '{category}/{date:%Y}/{date:%m}/{date:%d}/{slug}/index.html'
 PAGE_URL = 'pages/{slug}/'
 PAGE_SAVE_AS = 'pages/{slug}/index.html'
 
