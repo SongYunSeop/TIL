@@ -7,7 +7,7 @@ import glob
 
 AUTHOR = 'Yunseop Song'
 SITENAME = '전지적 송윤섭시점 TIL'
-SITEURL = 'https://til.songyunseop.com/til'
+SITEURL = 'https://til.songyunseop.com'
 TIMEZONE = 'Asia/Seoul'
 DEFAULT_LANG = 'ko'
 if platform.system() == 'Darwin':

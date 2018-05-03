@@ -121,6 +121,15 @@ drwxr-xr-x 2 druid druid 6 Apr 26 07:09 s3
 drwxr-xr-x 2 druid druid 6 Apr 26 07:01 var
 ```
 
+## Issue
+
+- Permission on HDFS
+  HDFS에 /user/druid` 디렉토리를 만들고 chown으로 권한을 주면 해결
+
+```
+Caused by: org.apache.hadoop.ipc.RemoteException: Permission denied: user=druid, access=WRITE, inode="/user":hdfs:hadoop:drwxr-xr-x
+```
+
 ## Refer
 
 - http://druid.io/docs/latest/operations/other-hadoop.html
