@@ -1,0 +1,17 @@
+<footer>
+  <ul class="site-list">
+    {% for name,link in LINKS %}
+      <li>
+        <a href="{{ link }}">{{ name }}</a>
+      </li>
+    {% endfor %}
+  </ul>
+  <ul class="site-list">
+    {% for name,link in SOCIAL %}
+      <li>
+        <a href="{{ link }}"><i class="fab fa-{{ name|lower }}"></i>&nbsp; {{ name }}</a>
+      </li>
+    {% endfor %}
+  </ul>
+  <section class="copyright"><a href="{{ SITEURL }}/">{{ SITENAME }}</a> © 2018</section>
+</footer>

@@ -14,7 +14,7 @@ if platform.system() == 'Darwin':
     SITEURL = 'http://localhost:8000'
 
 PAGE_PATHS = [os.getcwd()+"/README.md"]
-ARTICLE_PATHS = glob.glob(os.getcwd()+"/*/*.md")
+ARTICLE_PATHS = glob.glob(os.getcwd()+"/druid/*.md")
 STATIC_PATHS = ['static']
 
 DEFAULT_PAGINATION = 4

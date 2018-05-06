@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="{{ DEFAULT_LANG }}">
+<head>
+  {% block head %}
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% block title %}{{ SITENAME }}{% endblock title %}</title>
+  <link rel="stylesheet" href="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/css/main.css" />
+  <link rel="stylesheet" href="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/css/fa-svg-with-js.css" />
+  <script src="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/js/fontawesome-all.min.js" type="text/javascript" charset="utf-8"></script>
+
+  {% if FEED_ALL_ATOM %}
+  <link href="{{ FEED_DOMAIN }}/{% if FEED_ALL_ATOM_URL %}{{ FEED_ALL_ATOM_URL }}{% else %}{{ FEED_ALL_ATOM }}{% endif %}" type="application/atom+xml" rel="alternate" title="{{ SITENAME }} Full Atom Feed" />
+  {% endif %}
+  {% if FEED_ALL_RSS %}
+  <link href="{{ FEED_DOMAIN }}/{% if FEED_ALL_RSS_URL %}{{ FEED_ALL_RSS_URL }}{% else %}{{ FEED_ALL_RSS }}{% endif %}" type="application/rss+xml" rel="alternate" title="{{ SITENAME }} Full RSS Feed" />
+  {% endif %}
+  {% if FEED_ATOM %}
+  <link href="{{ FEED_DOMAIN }}/{%if FEED_ATOM_URL %}{{ FEED_ATOM_URL }}{% else %}{{ FEED_ATOM }}{% endif %}" type="application/atom+xml" rel="alternate" title="{{ SITENAME }} Atom Feed" />
+  {% endif %}
+  {% if FEED_RSS %}
+  <link href="{{ FEED_DOMAIN }}/{% if FEED_RSS_URL %}{{ FEED_RSS_URL }}{% else %}{{ FEED_RSS }}{% endif %}" type="application/rss+xml" rel="alternate" title="{{ SITENAME }} RSS Feed" />
+  {% endif %}
+  {% if CATEGORY_FEED_ATOM and category %}
+  <link href="{{ FEED_DOMAIN }}/{% if CATEGORY_FEED_ATOM_URL %}{{ CATEGORY_FEED_ATOM_URL|format(category.slug) }}{% else %}{{ CATEGORY_FEED_ATOM|format(category.slug) }}{% endif %}" type="application/atom+xml" rel="alternate" title="{{ SITENAME }} Categories Atom Feed" />
+  {% endif %}
+  {% if CATEGORY_FEED_RSS and category %}
+  <link href="{{ FEED_DOMAIN }}/{% if CATEGORY_FEED_RSS_URL %}{{ CATEGORY_FEED_RSS_URL|format(category.slug) }}{% else %}{{ CATEGORY_FEED_RSS|format(category.slug) }}{% endif %}" type="application/rss+xml" rel="alternate" title="{{ SITENAME }} Categories RSS Feed" />
+  {% endif %}
+  {% if TAG_FEED_ATOM and tag %}
+  <link href="{{ FEED_DOMAIN }}/{% if TAG_FEED_ATOM_URL %}{{ TAG_FEED_ATOM_URL|format(tag.slug) }}{% else %}{{ TAG_FEED_ATOM|format(tag.slug) }}{% endif %}" type="application/atom+xml" rel="alternate" title="{{ SITENAME }} Tags Atom Feed" />
+  {% endif %}
+  {% if TAG_FEED_RSS and tag %}
+  <link href="{{ FEED_DOMAIN }}/{% if TAG_FEED_RSS_URL %}{{ TAG_FEED_RSS_URL|format(tag.slug) }}{% else %}{{ TAG_FEED_RSS|format(tag.slug) }}{% endif %}" type="application/rss+xml" rel="alternate" title="{{ SITENAME }} Tags RSS Feed" />
+  {% endif %}
+  {% endblock head %}
+</head>
+
+<body id="index" class="home">
+  {% include "./_include/header.html" %}
+  <main id="main" role="main">
+    {% block content %}
+    {% endblock %}
+    {% include "./_include/sidebar.html" %}
+  </main>
+  {% include "./_include/footer.html" %}
+</body>
+</html>

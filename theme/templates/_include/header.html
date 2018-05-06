@@ -1,0 +1,19 @@
+<header id="header">
+  <h1><a href="{{ SITEURL }}/">{{ SITENAME }} <strong>{{ SITESUBTITLE }}</strong></a></h1>
+</header>
+<nav id="nav">
+  <ul>
+    {% for title, link in MENUITEMS %}
+      <li>
+        <a href="{{ link }}">{{ title }}</a>
+      </li>
+    {% endfor %}
+    {% if DISPLAY_PAGES_ON_MENU %}
+      {% for p in pages %}
+        <li{% if page %} class="active" {% endif %}>
+          <a href="{{ SITEURL }}/{{ p.url }}">{{ p.title }}</a>
+        </li>
+      {% endfor %}
+    {% endif %}
+  </ul>
+</nav>

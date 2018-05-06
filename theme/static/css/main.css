@@ -1,0 +1,61 @@
+body {
+  margin: 0;
+}
+
+body a {
+  color: #FF7ACF;
+  text-decoration: none;
+}
+
+#header {
+  margin: 0 auto;
+  padding: 1.3em 0 0 0;
+
+}
+
+#nav ul {
+  list-style: none;
+  display: flex;
+  margin: 0;
+  padding: 0;
+}
+
+#nav ul li {
+  display: block;
+  margin: 0;
+}
+
+#nav ul li a {
+  padding: 10px 12px;
+  opacity: .8;
+}
+
+#content {
+  width: 80%;
+  float: left;
+}
+
+#content #post-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+
+}
+
+#sidebar {
+  width: 20%;
+  float: left;
+}
+
+
+.fa-github {
+  color: #000000;
+}
+
+.fa-facebook {
+  color: #4267B2;
+}
+
+.fa-linkedin {
+  color: #2F76B0;
+}
