@@ -59,7 +59,7 @@ function shut_down(){
 function start_up(){
   echo "Starting up Pelican and SimpleHTTPServer"
   shift
-  $PELICAN --autoreload -o $OUTPUTDIR -s $CONFFILE $PELICANOPTS  -t theme &
+  $PELICAN --autoreload -o $OUTPUTDIR -s $CONFFILE $PELICANOPTS &
   echo $! > $PELICAN_PID
   cd $OUTPUTDIR
   python -m pelican.server &

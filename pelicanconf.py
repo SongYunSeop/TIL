@@ -15,6 +15,7 @@ if platform.system() == 'Darwin':
 
 PAGE_PATHS = [os.getcwd()+"/README.md"]
 ARTICLE_PATHS = glob.glob(os.getcwd()+"/druid/*.md")
+ARTICLE_PATHS.append(os.getcwd()+"/data/lambda_architecture.md")
 STATIC_PATHS = ['static']
 
 DEFAULT_PAGINATION = 4
@@ -46,18 +47,39 @@ SOCIAL = (
     ('LinkedIn', 'https://www.linkedin.com/in/yunseop-song-698226110'),
 )
 
+THEME = os.getcwd() + '/theme-elegant'
+
 # Feed generation is usually not desired when developing
 FEED_ALL_ATOM = None
 CATEGORY_FEED_ATOM = None
 TRANSLATION_FEED_ATOM = None
 AUTHOR_FEED_ATOM = None
 AUTHOR_FEED_RSS = None
+TAG_SAVE_AS = ''
+CATEGORY_SAVE_AS = ''
+AUTHOR_SAVE_AS = ''
 
 DIRECT_TEMPLATES = ['index', 'categories', 'authors', 'archives']
 
 PLUGIN_PATHS = ["custom-plugins", "pelican-plugins"]
-PLUGINS = ["auto-title", "filetime_from_git", "sitemap"]
+PLUGINS = ["auto-title", "filetime_from_git", "sitemap", "extract_toc", "tipue_search"]
 
 SITEMAP = {
     'format': 'xml'
 }
+
+LANDING_PAGE_ABOUT  = {
+    "title": "About",
+    "details": "test"
+
+}
+PROJECTS = [{
+    'name': 'Logpad + Duration',
+    'url': 'https://github.com/talha131/logpad-plus-duration#logpad--duration',
+    'description': 'Vim plugin to emulate Windows Notepad logging feature,'
+    ' and log duration of each entry'},
+    {'name': 'Elegant Theme for Pelican',
+    'url': 'http://oncrashreboot.com/pelican-elegant',
+    'description': 'A clean and distraction free theme, with search and a'
+    ' lot more unique features, using Jinja2 and Bootstrap'}]
+

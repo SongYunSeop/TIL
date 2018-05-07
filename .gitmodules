@@ -1,3 +1,6 @@
 [submodule "pelican-plugins"]
   path = pelican-plugins
   url = git://github.com/getpelican/pelican-plugins.git
+[submodule "theme-elegant"]
+	path = theme-elegant
+	url = https://github.com/talha131/pelican-elegant.git
