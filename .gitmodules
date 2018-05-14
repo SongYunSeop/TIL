@@ -2,5 +2,5 @@
   path = pelican-plugins
   url = git://github.com/getpelican/pelican-plugins.git
 [submodule "pelican-theme-material"]
-  path = pelican-theme-material
-  url = git://github.com/songyunseop/pelican-theme-material.git
+	path = pelican-theme-material
+	url = https://github.com/songyunseop/pelican-theme-material.git
