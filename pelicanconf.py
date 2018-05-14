@@ -17,7 +17,7 @@ PAGE_PATHS = [os.getcwd()+"/README.md"]
 ARTICLE_PATHS = glob.glob(os.getcwd()+"/*/*.md")
 STATIC_PATHS = ['static']
 
-DEFAULT_PAGINATION = 4
+DEFAULT_PAGINATION = 5
 DEFAULT_CATEGORY='uncategorized'
 USE_FOLDER_AS_CATEGORY=True
 DISPLAY_PAGES_ON_MENU=True
@@ -46,6 +46,8 @@ SOCIAL = (
     ('LinkedIn', 'https://www.linkedin.com/in/yunseop-song-698226110'),
 )
 
+THEME = os.getcwd() + '/pelican-theme-material'
+
 # Feed generation is usually not desired when developing
 FEED_ALL_ATOM = None
 CATEGORY_FEED_ATOM = None
@@ -53,10 +55,8 @@ TRANSLATION_FEED_ATOM = None
 AUTHOR_FEED_ATOM = None
 AUTHOR_FEED_RSS = None
 
-DIRECT_TEMPLATES = ['index', 'categories', 'authors', 'archives']
-
 PLUGIN_PATHS = ["custom-plugins", "pelican-plugins"]
-PLUGINS = ["auto-title", "filetime_from_git", "sitemap"]
+PLUGINS = ["auto-title", "filetime_from_git", "sitemap", "share_post"]
 
 SITEMAP = {
     'format': 'xml'
