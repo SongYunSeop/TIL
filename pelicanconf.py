@@ -51,6 +51,8 @@ SOCIAL = (
 )
 
 THEME = os.getcwd() + '/pelican-theme-material'
+THEME_PRIMARY_COLOR = 'blue_grey'
+THEME_SECODARY_COLOR = 'pink'
 
 # Feed generation is usually not desired when developing
 FEED_ALL_ATOM = None
@@ -60,8 +62,10 @@ AUTHOR_FEED_ATOM = None
 AUTHOR_FEED_RSS = None
 
 PLUGIN_PATHS = ["custom-plugins", "pelican-plugins"]
-PLUGINS = ["auto-title", "filetime_from_git", "sitemap", "share_post"]
+PLUGINS = ["auto-title", "filetime_from_git", "sitemap", "share_post", "tipue_search"]
 
 SITEMAP = {
     'format': 'xml'
 }
+
+DIRECT_TEMPLATES = ['index', 'tags', 'categories', 'archives', 'search']
