@@ -14,9 +14,7 @@ if platform.system() == 'Darwin':
     SITEURL = 'http://localhost:8000'
 
 PAGE_PATHS = [os.getcwd()+"/README.md"]
-ARTICLE_EXCLUDES = [
-    os.getcwd()+'/pelican-theme-material/README.md'
-]
+ARTICLE_EXCLUDES = glob.glob(os.getcwd()+"/pelican-theme-material/*.md")
 ARTICLE_PATHS = [article for article in glob.glob(os.getcwd()+"/*/*.md") if article not in ARTICLE_EXCLUDES]
 
 STATIC_PATHS = ['static']
