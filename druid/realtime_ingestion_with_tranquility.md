@@ -96,6 +96,8 @@ http://druid.io/downloads.html 에서 다운로드
 $ ./bin/tranquility kafka -configFile {CONFIG_FILE_PATH}
 ```
 
+실행하면 Druid Firehoses를 사용해 Real-Time Ingestion을 수행한다.
+
 ## 이슈
 
 1. `Failed to create directory within 10000 attempts`
@@ -108,7 +110,7 @@ $ ./bin/tranquility kafka -configFile {CONFIG_FILE_PATH}
 
 ## Troubleshootings
 
-[Github Trable Page](https://github.com/druid-io/tranquility/blob/master/docs/trouble.md)
+#### Ref: [Github Trouble Page](https://github.com/druid-io/tranquility/blob/master/docs/trouble.md)
 
 ### 이벤트가 성공적으로 보내졌지만 드루이드에서는 데이터가 보이지 않음.
 
