@@ -2,7 +2,9 @@
 # -*- coding: utf-8 -*-
 from recommonmark.parser import CommonMarkParser
 
-extensions = []
+extensions = [
+    'sphinx_markdown_tables'
+]
 
 templates_path = ['_templates']
 
