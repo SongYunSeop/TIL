@@ -17,6 +17,13 @@ Today I Learned
     cli/*
 
 .. toctree::
+    :caption: Data:
+    :glob:
+    :titlesonly:
+
+    data/*
+
+.. toctree::
     :caption: Docker:
     :glob:
     :titlesonly:
@@ -64,6 +71,14 @@ Today I Learned
     :titlesonly:
 
     react/*
+
+.. toctree::
+    :caption: Redis:
+    :glob:
+    :titlesonly:
+
+    redis/*
+
 
 .. toctree::
     :caption: Tmux:
