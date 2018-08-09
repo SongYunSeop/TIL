@@ -16,7 +16,7 @@ source_suffix = ['.rst', '.md']
 master_doc = 'index'
 
 project = 'TIL'
-copyright = '2017, Yunseop Song'
+copyright = '2018, Yunseop Song'
 author = 'Yunseop Song'
 
 version = '1.0'
