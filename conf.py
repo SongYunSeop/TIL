@@ -3,7 +3,8 @@
 from recommonmark.parser import CommonMarkParser
 
 extensions = [
-    'sphinx_markdown_tables'
+    'sphinx_markdown_tables',
+    'sphinx_sitemap'
 ]
 
 templates_path = ['_templates']
@@ -73,3 +74,5 @@ texinfo_documents = [
      author, 'TIL', 'One line description of project.',
      'Miscellaneous'),
 ]
+
+site_url = 'https://til.songyunseop.com/'
