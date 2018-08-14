@@ -40,6 +40,15 @@ html_theme_options = {
     'navigation_depth': 3,
 }
 
+html_context = {
+    "display_github": True,
+    "github_user": "songyunseop",
+    "github_repo": project,
+    "github_version": "master",
+    "conf_py_path": "/",
+    "source_suffix": source_suffix,
+}
+
 html_static_path = []
 
 html_sidebars = {
