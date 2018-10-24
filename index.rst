@@ -10,6 +10,13 @@ Today I Learned
 - 파일명은 영어로 한다.
 
 .. toctree::
+    :caption: Ad Tech:
+    :glob:
+    :titlesonly:
+
+    adtech/*
+
+.. toctree::
     :caption: CLI:
     :glob:
     :titlesonly:
