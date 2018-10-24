@@ -24,6 +24,13 @@ Today I Learned
     cli/*
 
 .. toctree::
+    :caption: Computer Network:
+    :glob:
+    :titlesonly:
+
+    computer-network/*
+
+.. toctree::
     :caption: Data:
     :glob:
     :titlesonly:
