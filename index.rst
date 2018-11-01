@@ -14,96 +14,95 @@ Today I Learned
     :glob:
     :titlesonly:
 
-    adtech/*
+    adtech/**
 
 .. toctree::
     :caption: CLI:
     :glob:
     :titlesonly:
 
-    cli/*
+    cli/**
 
 .. toctree::
     :caption: Computer Network:
     :glob:
     :titlesonly:
 
-    computer-network/*
+    computer-network/**
 
 .. toctree::
     :caption: Data:
     :glob:
     :titlesonly:
 
-    data/*
+    data/**
 
 .. toctree::
     :caption: Docker:
     :glob:
     :titlesonly:
 
-    docker/*
+    docker/**
 
 .. toctree::
     :caption: Druid:
     :glob:
     :titlesonly:
 
-    druid/*
+    druid/**
 
 .. toctree::
     :caption: Git:
     :glob:
     :titlesonly:
 
-    git/*
+    git/**
 
 .. toctree::
     :caption: Http:
     :glob:
     :titlesonly:
 
-    http/*
+    http/**
 
 .. toctree::
     :caption: MySQL:
     :glob:
     :titlesonly:
 
-    mysql/*
+    mysql/**
 
 .. toctree::
     :caption: Python:
     :glob:
     :titlesonly:
 
-    python/*
+    python/**
 
 .. toctree::
     :caption: React:
     :glob:
     :titlesonly:
 
-    react/*
+    react/**
 
 .. toctree::
     :caption: Redis:
     :glob:
     :titlesonly:
 
-    redis/*
-
+    redis/**
 
 .. toctree::
     :caption: Tmux:
     :glob:
     :titlesonly:
 
-    tmux/*
+    tmux/**
 
 .. toctree::
     :caption: VIM:
     :glob:
     :titlesonly:
 
-    vim/*
+    vim/**
