@@ -2,8 +2,8 @@
 
 {% block footer %}
 {{ super() }}
-<!-- Google Analytics -->
 <script>
+// Google Analytics
 (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
 (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
 m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
@@ -11,8 +11,19 @@ m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
 
 ga('create', 'UA-82138310-3', 'auto');
 ga('send', 'pageview');
+// End Google Analytics
+
+// Airbridge
+(function(a_,i_,r_,_b,_r,_i,_d,_g,_e){if(!a_[_b]||!a_[_b].queue){_g=i_.getElementsByTagName(r_)[0];a_[_b]={queue:[]};_d={};for(_i=0;_i<_r.length;_d={m:_d.m},_i++)_d.m=_r[_i],~_d.m.indexOf(".")&&(_e=_d.m.split(".")[0],a_[_b][_e]=a_[_b][_e]||{},a_[_b][_e][_d.m.split(".")[1]]=function(_d){return function(){a_[_b].queue.push([_d.m,arguments])}}(_d)),a_[_b][_d.m]=function(_d){return function(){a_[_b].queue.push([_d.m,arguments])}}(_d);_d=i_.createElement(r_);_d.async=1;_d.src="//static.airbridge.io/sdk/latest/airbridge.min.js";_g.parentNode.insertBefore(_d,_g)}})(window,document,"script","airbridge","init setBanner setDownload setDeeplinks sendSMS sendWeb setUserAgent setUserId setUserEmail setDeviceIFV setDeviceIFA setDeviceGAID events.send events.signIn events.signUp events.signOut events.purchased events.addedToCart events.productDetailsViewEvent events.homeViewEvent events.productListViewEvent events.searchResultViewEvent".split(" "));
+
+// initialize (necessary)
+airbridge.init({
+  app: 'songyunseop',
+  appToken: 'a2c6e34e326649668911b10105551f1a'
+})
+// End Airbridge
+
 </script>
-<!-- End Google Analytics -->
 {% endblock %}
 
 {% block comments %}
