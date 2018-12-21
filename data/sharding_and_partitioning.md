@@ -13,9 +13,9 @@
 | 1    | name1 | test1@test.com |
 | 2    | name2 | test2@test.com |
 | 3    | name3 | test3@test.com |
-| 3    | name4 | test4@test.com |
-| 3    | name5 | test5@test.com |
-| 3    | name6 | test6@test.com |
+| 4    | name4 | test4@test.com |
+| 5    | name5 | test5@test.com |
+| 6    | name6 | test6@test.com |
 
 
 ### Horizontal Partitioning
@@ -52,9 +52,9 @@ DB의 제 3정규화 느낌
 | 1    | name1 |
 | 2    | name2 |
 | 3    | name3 |
-| 3    | name4 |
-| 3    | name5 |
-| 3    | name6 |
+| 4    | name4 |
+| 5    | name5 |
+| 6    | name6 |
 
 
 | id   | email          |
@@ -62,6 +62,6 @@ DB의 제 3정규화 느낌
 | 1    | test1@test.com |
 | 2    | test2@test.com |
 | 3    | test3@test.com |
-| 3    | test4@test.com |
-| 3    | test5@test.com |
-| 3    | test6@test.com |
+| 4    | test4@test.com |
+| 5    | test5@test.com |
+| 6    | test6@test.com |
