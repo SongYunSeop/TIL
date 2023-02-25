@@ -5,7 +5,7 @@ description = ""
 authors = ["SongYunSeop <dbstjq91@gmail.com>"]
 
 [tool.poetry.dependencies]
-python = "^3.10"
+python = "^3.8"
 sphinx = "<6.0"
 sphinx-sitemap = "^2.5.0"
 myst-parser = "^0.18.1"
