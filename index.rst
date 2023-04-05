@@ -68,6 +68,13 @@ Today I Learned
     http/**
 
 .. toctree::
+    :caption: MacOS:
+    :glob:
+    :titlesonly:
+
+    macos/**
+
+.. toctree::
     :caption: MySQL:
     :glob:
     :titlesonly:
