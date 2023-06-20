@@ -14,11 +14,11 @@ INT(11), BIGINT(20)에 비해 UUID4 형식은 길이가 36(VARCHAR(36))인데 �
 
 Insert 순서대로 볼 수 있으니까...
 
-# 하지만 단점도 있다
+## 하지만 단점도 있다
 
-## 1. 분산환경이라면 Auto Increment는 사용할 수 없다.
+### 1. 분산환경이라면 Auto Increment는 사용할 수 없다.
 
-## 2. Primary Key를 Insert 후에 알 수 있다.  
+### 2. Primary Key를 Insert 후에 알 수 있다.  
 
 DB에 디펜던시가 생김. 하지만 UUID를 사용한다면 Insert 전에도 우리는 어떤 값을 가질지 알 수 있다.
 

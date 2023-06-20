@@ -1,35 +1,22 @@
 {% extends "!layout.html" %}
 {% block extrahead %}
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-82138310-3"></script>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-WKLMSFJCJ3"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
 
-  gtag('config', 'UA-82138310-3');
+  gtag('config', 'G-WKLMSFJCJ3');
 </script>
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({
-          google_ad_client: "ca-pub-6534605156104154",
-          enable_page_level_ads: true
-     });
-</script>
+<!-- adsense -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6534605156104154"
+     crossorigin="anonymous"></script>
 {% endblock %}
 
 {% block footer %}
 {{ super() }}
 <script>
-// Google Analytics
-(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-
-ga('create', 'UA-82138310-3', 'auto');
-ga('send', 'pageview');
-// End Google Analytics
-
 // Airbridge
 (function(a_,i_,r_,_b,_r,_i,_d,_g,_e){if(!a_[_b]||!a_[_b].queue){_g=i_.getElementsByTagName(r_)[0];a_[_b]={queue:[]};_d={};for(_i=0;_i<_r.length;_d={m:_d.m},_i++)_d.m=_r[_i],~_d.m.indexOf(".")&&(_e=_d.m.split(".")[0],a_[_b][_e]=a_[_b][_e]||{},a_[_b][_e][_d.m.split(".")[1]]=function(_d){return function(){a_[_b].queue.push([_d.m,arguments])}}(_d)),a_[_b][_d.m]=function(_d){return function(){a_[_b].queue.push([_d.m,arguments])}}(_d);_d=i_.createElement(r_);_d.async=1;_d.src="//static.airbridge.io/sdk/latest/airbridge.min.js";_g.parentNode.insertBefore(_d,_g)}})(window,document,"script","airbridge","init setBanner setDownload setDeeplinks sendSMS sendWeb setUserAgent setUserId setUserEmail setDeviceIFV setDeviceIFA setDeviceGAID events.send events.signIn events.signUp events.signOut events.purchased events.addedToCart events.productDetailsViewEvent events.homeViewEvent events.productListViewEvent events.searchResultViewEvent".split(" "));
 
